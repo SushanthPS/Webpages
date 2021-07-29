@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        h1 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 40px;
+            color: rgb(110, 200, 230);
+        }
+
+        #cont {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 110px;
+            justify-content: space-evenly;
+            text-align: center;
+        }
+
+        img {
+            width: 300px;
+        }
+
+        img:hover {
+            content:
+                url("https://media.gettyimages.com/photos/closeup-of-gold-jewelry-at-store-for-sale-picture-id638722477?s=612x612");
+        }
+
+
+        .box {
+            background-color: whitesmoke;
+            padding: 20px;
+            box-shadow: 2px 2px 2px 2px gray;
+        }
+
+        #sort {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        #sort button {
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Jewellery Store</h1>
+    <div id="sort">
+        <button id="lh">Sort: Low to High</button>
+        <button id="hl">Sort: High to Low</button>
+    </div>
+    <div id="cont">
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    let products = document.getElementById("cont");
+    let LH = document.getElementById("lh");
+    let HL = document.getElementById("hl");
+    LH.onclick = sortLH;
+    HL.onclick = sortHL;
+
+    const arr = [{
+            name: "Jewel 1",
+            price: 8000,
+            brand: "abc",
+            url: "https://image.shutterstock.com/image-photo/wearing-gold-bracelet-flower-patternbeautiful-600w-1888591612.jpg"
+        },
+        {
+            name: "Jewel 2",
+            price: 16000,
+            brand: "labac",
+            url: "https://image.shutterstock.com/image-photo/jeweler-looking-ring-blue-stone-600w-1936497220.jpg"
+        },
+        {
+            name: "Jewel 3",
+            price: 10000,
+            brand: "chibai",
+            url: "https://image.shutterstock.com/image-photo/green-emerald-fashion-engagement-diamond-600w-1081422155.jpg"
+        },
+        {
+            name: "Jewel 4",
+            price: 5000,
+            brand: "chibai",
+            url: "https://image.shutterstock.com/image-photo/real-pearl-necklace-temple-jewellery-600w-1441971443.jpg"
+        },
+        {
+            name: "Jewel 5",
+            price: 19000,
+            brand: "labac",
+            url: "https://image.shutterstock.com/image-photo/rose-gold-diamond-necklace-600w-1033340518.jpg"
+        },
+        {
+            name: "Jewel 6",
+            price: 30000,
+            brand: "abc",
+            url: "https://image.shutterstock.com/image-photo/indian-traditional-wedding-jewellery-bangles-600w-363281924.jpg"
+        },
+        {
+            name: "Jewel 7",
+            price: 25000,
+            brand: "abc",
+            url: "https://image.shutterstock.com/image-photo/jewellery-set-hearts-shape-rose-600w-1679404447.jpg"
+        },
+        {
+            name: "Jewel 8",
+            price: 9000,
+            brand: "labac",
+            url: "https://image.shutterstock.com/image-photo/gold-diamond-jewellery-600w-1162072501.jpg"
+        },
+        {
+            name: "Jewel 9",
+            price: 8000,
+            brand: "chibai",
+            url: "https://image.shutterstock.com/image-photo/beautiful-indian-jewellery-low-light-600w-1299355801.jpg"
+        }
+    ]
+
+
+    function showProducts(temp) {
+        products.innerHTML = "";
+        for (let i = 0; i < temp.length; i++) {
+            let div = document.createElement("div");
+            div.setAttribute("class", "box");
+            let image = document.createElement("img");
+            let btn = document.createElement("button");
+            let h3 = document.createElement("h4");
+            btn.setAttribute("id", i);
+            let p = document.createElement("p");
+
+            image.src = temp[i].url;
+            btn.innerHTML = "Add to cart";
+            btn.onclick = addToCart;
+            h3.innerHTML = `${temp[i].name} (${temp[i].brand})`
+            p.innerHTML = `₹ ${temp[i].price}`
+            // image.onmouseover = function () {
+            //     image.src =
+            //         "https://media.gettyimages.com/photos/closeup-of-gold-jewelry-at-store-for-sale-picture-id638722477?s=612x612";
+            // }
+            div.append(image, h3, p, btn);
+            products.append(div);
+
+        }
+    }
+
+    showProducts(arr);
+
+    function sortLH() {
+        let temp = arr.slice(0);
+        temp = temp.sort(function (a, b) {
+            return a.price - b.price;
+        });
+        showProducts(temp);
+    }
+
+    function sortHL() {
+        let temp = arr.slice(0);
+        temp.sort(function (a, b) {
+            return b.price - a.price;
+        })
+        showProducts(temp);
+
+    }
+
+    let cart = [];
+
+    function addToCart(e) {
+        let index = e.target.id;
+        cart.push(arr[index]);
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }
+</script>

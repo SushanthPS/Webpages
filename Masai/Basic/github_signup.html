@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: rgb(14, 14, 14);
+        }
+
+        #main {
+            margin: auto;
+            background-color: rgb(35, 40, 46);
+            width: 1800px;
+            height: 600px;
+            margin-top: 150px;
+        }
+
+        #text {
+            color: white;
+            font-size: 40px;
+            text-align: center;
+            padding-top: 50px;
+            letter-spacing: 1px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-bottom: 80px;
+        }
+
+        #input-fields {
+            width: 1500px;
+            height: 150px;
+            margin-top: 500px;
+            margin: auto;
+            margin-bottom: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        span {
+            color: white;
+        }
+
+        #agreement {
+            color: rgb(90, 97, 105);
+            margin-left: 400px;
+            font-size: 15px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .float {
+            float: left;
+            margin: 20px;
+            color: white;
+
+        }
+
+        #first {
+            margin-left: 100px;
+        }
+
+        input {
+            width: 280px;
+            border-radius: 5px;
+            border: none;
+            height: 40px;
+        }
+
+        button {
+            color: white;
+            background-color: rgb(0, 208, 86);
+            border: none;
+            border-radius: 5px;
+            width: 300px;
+            height: 50px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="text">Get started for free - join the millions of developers already <br> using GitHub to share their
+            code, work
+            together, and build <br> amazing things.</div>
+
+        <div id="input-fields">
+            <form>
+                <div id="first" class="float">
+                    <label for="user">Username</label> <br>
+                    <input id="user" type="text" placeholder="Pick a username">
+                </div>
+                <div class="float">
+                    <label for="email">Email</label> <br>
+                    <input id="email" type="email" placeholder="Your email address">
+                </div>
+                <div class="float">
+                    <label for="pass">Password</label> <br>
+                    <input id="pass" type="password" placeholder="Create a password">
+                </div>
+                <div class="float">
+                    <button>Sign up for GitHub</button>
+                </div>
+
+            </form>
+        </div>
+
+        <div id="agreement"> By clicking "Sign up for GitHub", you agree to our <span>terms of service</span> and
+            <span>privacy statement.</span> We'll ocasionally send you account related emails.
+
+
+        </div>
+
+    </div>
+</body>
+
+</html>

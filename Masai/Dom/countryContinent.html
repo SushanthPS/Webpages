@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Country continent</title>
+    <style>
+        body {
+            font-size: 20px;
+            margin: 20px;
+            margin-top: 150px;
+        }
+
+        select {
+            margin-left: 40px
+        }
+
+        label {
+            margin-left: 20px;
+        }
+
+        button {
+            background-color: black;
+            color: white;
+            border: none;
+            width: 90px;
+            height: 50px;
+            margin-left: 5px;
+        }
+
+        div {
+            background-color: whitesmoke;
+            width: 400px;
+            height: 120px;
+            margin: auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <label>Country</label>
+        <select id="continent_select">
+            <option value=""></option>
+            <option value="India"> India </option>
+            <option value="United States of America"> United States of America </option>
+            <option value="China"> China </option>
+            <option value="Nepal"> Nepal </option>
+            <option value="Australia"> Australia </option>
+            <option value="France"> France </option>
+            <option value="Germany"> Germany </option>
+            <option value="South Africa"> South Africa </option>
+            <option value="Nigeria"> Nigeria </option>
+            <option value="Mexico"> Mexico </option>
+            <option value="Argentina"> Argentina </option>
+            <option value="Brazil"> Brazil </option>
+            <option value="Canada"> Canada </option>
+            <option value="Singapore"> Singapore </option>
+            <option value="Sweden"> Sweden </option>
+        </select>
+        <br> <br>
+        <button onclick="findContinent()">Find continent</button>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    function findContinent() {
+        var country = document.getElementById("continent_select").value;
+        var result = "";
+        switch (country) {
+            case "India":
+            case "China":
+            case "Nepal":
+            case "Singapore":
+                alert("The continent is Asia");
+                break;
+            case "United States of America":
+            case "Mexico":
+            case "Canada":
+                alert("The continent is North America");
+                break;
+            case "Australia":
+                alert("The continent is Oceania");
+                break;
+            case "France":
+            case "Germany":
+            case "Sweden":
+                alert("The continent is Europe");
+                break;
+            case "South Africa":
+            case "Nigeria":
+                alert("The continent is Africa");
+                break;
+            case "Argentina":
+            case "Brazil":
+                alert("The continent is South America");
+                break;
+        }
+
+    }
+</script>

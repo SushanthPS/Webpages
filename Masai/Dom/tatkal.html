@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #counter {
+            float: right;
+            font-size: 30px;
+            padding: 10px;
+            margin-right: 30px;
+            margin-top: -60px;
+        }
+
+        #train1,
+        #train2,
+        #train3 {
+            margin: 10px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tatkal alert system</h1>
+
+    <button onclick="checkAvailability()">Notify me when train available</button>
+
+    <div id="counter">
+        <div id="train1">Train 1: 0 </div>
+        <div id="train2">Train 2: 0</div>
+        <div id="train3">Train 3: 0</div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    let train1 = document.getElementById("train1");
+    let train2 = document.getElementById("train2");
+    let train3 = document.getElementById("train3");
+    let MtoG = ['Dicaprio', 'Ronaldo', 'Dhoni', 'Lebron', 'Rahul Gandhi', 'Chettri', 'Babu bhaiya', 'Jethalal'];
+    let BtoG = ['Dicaprio', 'Ronaldo', 'Dhoni', 'Lebron', 'Rahul Gandhi', 'Chettri', 'Babu bhaiya', 'Jethalal'];
+    let PtoG = ['Dicaprio', 'Ronaldo', 'Dhoni', 'Lebron', 'Rahul Gandhi', 'Chettri', 'Babu bhaiya', 'Jethalal'];
+
+    async function checkAvailability() {
+        let promise = new Promise(function (resolve, reject) {
+            setInterval(function () {
+                if (MtoG.length < 5) {
+                    resolve('Train 1 is available');
+                } else if (BtoG.length < 5) {
+                    resolve('Train 2 is available');
+                } else if (PtoG.length < 5) {
+                    resolve('Train 3 is available');
+                }
+            }, 1000);
+        });
+        let res = await promise;
+        alert(res);
+        checkAvailability.then(window.location.href = "booking.html")
+
+    }
+
+    function cancelTicket() {
+        let cancelling_speed1 = Math.ceil(Math.random() * 5);
+        let cancelling_speed2 = Math.ceil(Math.random() * 5);
+        let cancelling_speed3 = Math.ceil(Math.random() * 5);
+
+        setTimeout(function () {
+            MtoG.pop()
+        }, cancelling_speed1 * 1000);
+
+        setTimeout(function () {
+            BtoG.pop()
+        }, cancelling_speed2 * 1000);
+
+        setTimeout(function () {
+            PtoG.pop()
+        }, cancelling_speed3 * 1000);
+    }
+
+    var interval = setInterval(cancelTicket, 1000);
+
+    setInterval(function () {
+        train1.innerHTML = `Train 1: ${MtoG.length}`;
+        train2.innerHTML = `Train 2: ${BtoG.length}`;
+        train3.innerHTML = `Train 3: ${PtoG.length}`;
+        console.log(BtoG);
+
+    }, 1000)
+
+    let i = 0;
+
+    function bookingTicket() {
+        i++;
+        let name = "Random" + i;
+        MtoG.push(name);
+        PtoG.push(name);
+        BtoG.push(name);
+
+    }
+
+    setInterval(bookingTicket, 3000);
+</script>

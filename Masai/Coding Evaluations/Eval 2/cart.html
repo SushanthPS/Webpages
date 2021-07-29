@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        h1 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 40px;
+            color: rgb(110, 200, 230);
+        }
+
+        #cont {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 50px;
+            justify-content: center;
+            text-align: center;
+        }
+
+        img {
+            width: 300px;
+        }
+
+
+        .box {
+            background-color: whitesmoke;
+            padding: 20px;
+            box-shadow: 2px 2px 2px 2px gray;
+        }
+
+        #promo-box {
+            text-align: center;
+            width: 40%;
+            justify-content: center;
+            margin: auto;
+            margin-bottom: 50px;
+        }
+
+        #promo-box input {
+
+            text-align: center;
+        }
+
+        #promo-text {
+            color: white;
+        }
+
+        #counter {
+            float: right;
+            margin-top: -80px;
+            margin-right: 100px;
+            font-size: 30px;
+        }
+
+        #counter-items,
+        #counter-cost,
+        #counter-promo {
+            margin: 16px;
+
+        }
+
+        #promo-box button:nth-of-type(2) {
+            margin-top: 40px;
+            font-size: 20px;
+            border: none;
+            background-color: greenyellow;
+            border-radius: 20px;
+            width: 150px;
+            height: 30px;
+        }
+
+        #promo-box button:nth-of-type(2):hover {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Cart</h1>
+    <div id="counter">
+        <div id="counter-items">Total items: </div>
+        <div id="counter-cost">Total cost: </div>
+        <div id="counter-promo"></div>
+    </div>
+    <div id="promo-box">
+        <input type="text" placeholder="PROMO CODE" id="promo-value">
+        <div id="promo-text">Invalid code!</div>
+        <button onclick="applyPromo()">Apply Promo</button> <br>
+        <button onclick="checkout()">Checkout</button>
+    </div>
+
+    <div id="cont">
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    let products = document.getElementById("cont");
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    if (cart == null)
+        cart = [];
+    let sum = 0;
+    let promoPrice;
+
+    let counterItems = document.getElementById("counter-items");
+    let counterCost = document.getElementById("counter-cost");
+    let counterPromo = document.getElementById("counter-promo");
+
+
+    function showProducts(temp) {
+        products.innerHTML = "";
+        for (let i = 0; i < temp.length; i++) {
+            let div = document.createElement("div");
+            div.setAttribute("class", "box");
+            let image = document.createElement("img");
+            let h3 = document.createElement("h4");
+            let p = document.createElement("p");
+
+            image.src = temp[i].url;;
+            h3.innerHTML = `${temp[i].name} (${temp[i].brand})`
+            p.innerHTML = `₹ ${temp[i].price}`
+            sum += temp[i].price;
+            // image.onmouseover = function () {
+            //     image.src =
+            //         "https://media.gettyimages.com/photos/closeup-of-gold-jewelry-at-store-for-sale-picture-id638722477?s=612x612";
+            // }
+            div.append(image, h3, p);
+            products.append(div);
+        }
+        counterItems.innerHTML = `Total items: ${temp.length}`;
+        counterCost.innerHTML = `Total cost: ${sum}`;
+        promoPrice = sum - Math.floor(30 / 100 * sum);
+    }
+
+    showProducts(cart);
+
+    localStorage.setItem("totalCost", JSON.stringify(sum));
+
+    function applyPromo() {
+        let promo = document.getElementById("promo-value");
+        let text = document.getElementById("promo-text");
+        if (promo.value == "masai30") {
+            text.innerHTML = "Promo Applied!";
+            text.style.color = "green";
+            counterCost.style.textDecoration = "line-through";
+            counterPromo.innerHTML = `Promo price: ${promoPrice}`
+            localStorage.setItem("totalCost", JSON.stringify(promoPrice));
+
+
+        } else {
+            text.style.color = "red";
+        }
+    }
+
+    function checkout() {
+        window.location.href = "checkout.html";
+    }
+</script>

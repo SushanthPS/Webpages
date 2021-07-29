@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin-left: 40px;
+        }
+
+        li {
+            font-size: 20px;
+            margin-top: 50px;
+
+        }
+
+        p {
+            line-height: 10px;
+        }
+
+        .done {
+            color: green;
+            text-decoration: line-through;
+        }
+
+        #counter {
+            width: 100px;
+            height: 80px;
+            border: 2px solid red;
+            float: right;
+            margin-top: -50px;
+            margin-right: 50px;
+            font-size: 50px;
+            text-align: center;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>To do List:</h1>
+    <div id="counter">0 </div>
+    <input id="task" type="text" placeholder="Enter task">
+    <button onclick="submit()">Submit</button>
+    <ul id="task-list">
+
+    </ul>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function createTask(t) {
+        this.name = t;
+        this.date = new Date();
+    }
+
+    var taskList = document.getElementById("task-list");
+    var counter = document.getElementById("counter");
+    var id = 0;
+    var count = 0;
+
+    function submit() {
+        id++;
+        count++;
+        counter.innerHTML = count;
+        var taskValue = document.getElementById("task").value;
+        if (taskValue == null || taskValue == "")
+            return;
+        var task = new createTask(taskValue);
+        document.getElementById("task").value = null;
+
+        var li = document.createElement("li");
+        li.innerHTML =
+            `<p id=${id}>${task.name}</p><p>${task.date}</p><button onclick="Done(${id})">Done</button> <button onclick="Remove(${id})">Remove</button>`;
+        taskList.append(li);
+
+
+    }
+
+    function Done(id) {
+        var ele = document.getElementById(id);
+        ele.setAttribute("class", "done");
+    }
+
+    function Remove(id) {
+        var ele = document.getElementById(id);
+        var eleToRemove = ele.parentElement;
+        eleToRemove.remove();
+        count--;
+        counter.innerHTML = count;
+    }
+</script>

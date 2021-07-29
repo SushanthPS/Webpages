@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        #cont {
+            display: grid;
+            width: 60%;
+            gap: 20px;
+            grid-template: "a c"
+                "a d"
+                "a e"
+                "b f";
+            grid-template-rows: 150px 150px 150px 150px;
+            grid-template-columns: auto auto;
+            margin: auto;
+            margin-top: 100px;
+
+        }
+
+        #main-news {
+            grid-area: a;
+            background-color: #08345b;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #item1 {
+            grid-area: b;
+            background-color: white;
+        }
+
+        #item2 {
+            grid-area: c;
+            background-color: white;
+        }
+
+        #item3 {
+            grid-area: d;
+            background-color: white;
+        }
+
+        #item4 {
+            grid-area: e;
+            background-color: white;
+        }
+
+        #item5 {
+            grid-area: f;
+            background-color: white;
+        }
+
+        #item1,
+        #item2,
+        #item3,
+        #item4,
+        #item5 {
+            display: flex;
+            flex-direction: row;
+        }
+
+        h3 {
+            color: #64819b;
+            margin-bottom: -10px;
+        }
+
+
+        #main-news>img {
+            width: 100%;
+            height: 225px;
+        }
+
+        #item1 div,
+        #item2 div,
+        #item3 div,
+        #item4 div,
+        #item5 div {
+            margin: 10px;
+            margin-top: 0px;
+        }
+
+        h1 {
+            font-size: 30px;
+            color: white;
+        }
+
+        h4 {
+            color: white;
+            font-size: 13px;
+            line-height: 20px;
+        }
+
+        #main-news p {
+            color: #7195ae;
+            font-size: 14px;
+        }
+
+        #main-news h1,
+        #main-news h4,
+        #main-news p {
+            margin: 15px;
+            margin-bottom: 5px;
+
+        }
+
+        @media only screen and (min-width: 768px) and (max-width:991px) {
+            #cont {
+                display: grid;
+                gap: 20px;
+                grid-template: "a a"
+                    "b c"
+                    "d e";
+
+                grid-template-rows: 500px 150px;
+                grid-template-columns: 380px 380px;
+                margin: auto;
+                margin-top: 50px;
+                margin-left: 10px;
+
+            }
+
+            #item5 {
+                display: none;
+            }
+        }
+
+        @media only screen and (min-width: 600px) and (max-width:767px) {
+            #cont {
+                display: grid;
+                gap: 10px;
+                grid-template: "a"
+                    "b"
+                    "c"
+                    "d"
+                    "e"
+                    "f";
+
+                grid-template-rows: 450px 125px 125px 125px 125px 125px;
+                grid-template-columns: 600px;
+                margin: auto;
+                margin-left: 5px;
+
+
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cont">
+        <div id="main-news">
+            <img src="https://via.placeholder.com/500x225">
+            <h1>Ahmedabad joint rally with Trump will <br> be historic, says Modi</h1>
+            <h4>KALLOL BHATTACHERJEE <br> SUHASINI HAIDAR</h4>
+            <p>U.S. President to visit Sabarmati Ashram ahead of 'Namaste Trump' <br> event</p>
+        </div>
+        <div id="item1">
+            <img src="https://via.placeholder.com/150">
+            <div>
+                <h3>NATIONAL</h3>
+                <p>Ahmedabad glitters to welcome Donald Trump</p>
+            </div>
+        </div>
+        <div id="item2">
+            <img src="https://via.placeholder.com/150">
+            <div>
+                <h3>THE HUDDLE</h3>
+                <p>The Huddle 2020 | Regional integration pegged <br> to SAARC revival, says Ranil Wickremesinghe</p>
+            </div>
+        </div>
+        <div id="item3">
+            <img src="https://via.placeholder.com/150">
+            <div>
+                <h3>NATIONAL</h3>
+                <p>Over 10 lakh Kashmir students to don school <br> uniforms after seven months</p>
+            </div>
+
+        </div>
+        <div id="item4">
+            <img src="https://via.placeholder.com/150">
+            <div>
+                <h3>NATIONAL</h3>
+                <p>Some restrictions imposed on export of <br> medical equipment to China, says MEA</p>
+            </div>
+        </div>
+        <div id="item5">
+            <img src="https://via.placeholder.com/150">
+            <div>
+                <h3>THE HUDDLE</h3>
+                <p>Only a "a microscopic minority" protesting <br> against CAA:Tejaswi Surya</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

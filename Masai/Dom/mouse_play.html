@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            display: flex;
+            background-color: #3598db;
+        }
+
+        button {
+            border-radius: 10px;
+            font-size: 15px;
+            width: 200px;
+            height: 80px;
+            font-weight: 600;
+            border: none;
+            margin-left: 1600px;
+            margin-top: 800px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cont">
+        <button onmouseout="defaultColor()" onmouseover="changeColor()" id="button">SUBMIT</button>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var btn = document.getElementById("button");
+
+    function changeColor() {
+        btn.style.backgroundColor = randomColor();
+    }
+
+    function defaultColor() {
+        btn.style.backgroundColor = "white";
+    }
+
+
+    function randomColor() {
+        var x = Math.floor(Math.random() * 256);
+        var y = Math.floor(Math.random() * 256);
+        var z = Math.floor(Math.random() * 256);
+        var color = "rgb(" + x + "," + y + "," + z + ")";
+        return color;
+    }
+</script>

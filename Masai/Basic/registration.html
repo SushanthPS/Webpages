@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #leftbox {
+            float: left;
+            width: 300px;
+            height: 500px;
+            padding: 20px;
+            font-size: 25px;
+            margin-top: 200px;
+            margin-left: 500px;
+            font-weight: 500;
+        }
+
+        #rightbox {
+
+            float: right;
+            width: 350px;
+            height: 500px;
+            padding: 20px;
+            font-size: 20px;
+            margin-top: 200px;
+            margin-right: 500px;
+
+        }
+
+        input {
+            width: 290px;
+            height: 40px;
+            border: 2px solid black;
+        }
+
+        button {
+            width: 300px;
+            height: 60px;
+            font-size: 25px;
+        }
+
+        .alert {
+            color: red;
+            margin-top: 5px;
+        }
+
+        div {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .blackBack {
+            background-color: black;
+            color: white;
+        }
+
+        .medium {
+            font-size: 30px;
+            margin-top: 10px;
+            margin-bottom: 1px;
+        }
+
+        .large {
+            font-size: 60px;
+            margin-top: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+        <div id="leftbox">
+            <form>
+                <label for="name">NAME</label> <br>
+                <input type="text">
+                <br><br>
+                <label for="email">EMAIL</label><br>
+                <input type="text">
+                <br><br>
+                <label for="mob">MOBILE</label><br>
+                <input type="tel">
+                <p class="alert">Enter a valid mobile<p>
+                        <br>
+                        <button class="blackBack" type="button">REGISTER</button>
+            </form>
+        </div>
+
+        <div class="blackBack" id="rightbox">
+            <p class="medium">NAME</p>
+            <p class="large">MASAI</p>
+            <p class="medium">EMAIL</p>
+            <p class="medium">email@masaischool.com</p>
+            <br>
+            <p class="medium">MOBILE</p>
+            <p class="medium">9876543210</p>
+        </div>
+    </div>
+</body>
+
+</html>

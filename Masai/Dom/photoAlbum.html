@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #album {
+            display: grid;
+            padding: 5%;
+            grid-template-columns: 20% 20% 20% 20%;
+            gap: 5%;
+        }
+
+        img {
+            width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Photo album</h1>
+
+    <input type="text" id="url">
+    <button onclick="addImage()">Add Image</button>
+    <div id="album">
+
+
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    var album = document.getElementById("album");
+
+    function addImage() {
+        var url = document.getElementById("url").value;
+        var img = document.createElement("img");
+        img.setAttribute("src", url);
+        album.append(img);
+
+    }
+</script>

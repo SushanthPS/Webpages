@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        img {
+            width: 50%;
+        }
+
+        #data {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 10px;
+            margin-left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>My Tour Manager</h1>
+
+    <form id="myForm">
+        <input type="text" id="name" placeholder="Name">
+        <input type="number" id="rating" placeholder="Rating">
+        <input type="text" id="img" placeholder="Image">
+    </form>
+    <button onclick="storeLocation()">Add Location</button>
+    <button onclick="showVisited()">Show visited</button>
+
+
+    <div id="data">
+
+    </div>
+</body>
+
+</html>
+
+<script src="tourManager.js"></script>

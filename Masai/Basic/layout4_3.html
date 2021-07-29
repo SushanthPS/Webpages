@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: rgb(14, 14, 14);
+        }
+
+        #main {
+            width: 60%;
+            height: 800px;
+            margin: auto;
+            background-color: white;
+            margin-top: 60px;
+            border: 1px solid black;
+        }
+
+        #container {
+            margin-left: 80px;
+            width: 80%;
+            height: 600px;
+            margin: auto;
+            margin-top: 100px;
+            margin-left: 150px;
+        }
+
+        .small {
+            width: 15%;
+            height: 130px;
+            background-color: teal;
+            border-radius: 5px;
+            margin: 20px;
+            float: left;
+        }
+
+        .large {
+            height: 130px;
+            width: 40%;
+            background-color: teal;
+            border-radius: 5px;
+            float: left;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="container">
+            <div>
+                <div class="small"></div>
+                <div class="large"></div>
+                <div class="small"></div>
+            </div>
+            <div>
+                <div style="clear: left;" class="large"></div>
+                <div class="small"></div>
+                <div class="small"></div>
+            </div>
+            <div>
+                <div style="clear: left;" class="small"></div>
+                <div class="small"></div>
+                <div class="large"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

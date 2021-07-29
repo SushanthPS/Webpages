@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #peopleCount {
+            float: right;
+            clear: right;
+            font-size: 30px;
+            margin-top: 25px;
+            margin-right: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Vaccine Booth alert System</h1>
+
+    <input type="text" id="name" placeholder="Name">
+    <input type="number" id="age" placeholder="Age">
+    <button onclick="register()">Register for vaccine</button>
+    <div id="peopleCount">People in queue = 0</div>
+
+
+</body>
+
+</html>
+
+<script>
+    let queue = ['dicaprio', 'Ronaldo', 'Messi', 'Elon', 'Neymar', 'Rossi', 'Geodude', 'Pikachu', 'Ash', 'Harry'];
+    let vaccineCount = 4;
+
+    let peopleCount = document.getElementById("peopleCount");
+    peopleCount.innerHTML = `People in queue = ${queue.length}`
+
+    function register() {
+        const name = document.getElementById("name").value;
+        const age = document.getElementById("age").value;
+        if (age > 60)
+            queue.unshift(name);
+        else
+            queue.push(name);
+
+        let message = `${name} your registration has been done!`;
+        alert(message);
+
+        let promise = new Promise(function (resolve, reject) {
+            setInterval(function () {
+                if (queue[0] == name) {
+                    resolve(`${name}, go take a jab now`);
+                }
+            }, 100);
+        });
+        promise.then(function (res) {
+            alert(res);
+        })
+    }
+
+    function startVaccination() {
+        queue.shift();
+        vaccineCount--;
+        console.log(queue);
+        peopleCount.innerHTML = `People in queue = ${queue.length}`
+        if (queue.length == 0)
+            clearInterval(interval);
+        if (vaccineCount == 0) {
+            alert("vaccine out of stock, Visit tomorrow");
+            clearInterval(interval);
+        }
+    }
+    var interval = setInterval(startVaccination, 3000);
+</script>

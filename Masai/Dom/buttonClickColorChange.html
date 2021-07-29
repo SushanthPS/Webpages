@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        button {
+            margin: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="head">Change the buttons text color random value</h1>
+    <button id="button" onclick="changeColor()">Click here to change my color</button>
+    <br>
+    <button id="button2" onclick="changeColor2()">Click here to change my color</button>
+    <script>
+
+    </script>
+</body>
+
+</html>
+
+<script>
+    var i = 0;
+    var btn1 = document.getElementById("button");
+    var head = document.getElementById("head");
+    var btn2 = document.getElementById("button2");
+    var arr = ['blue', 'green', 'pink', 'yellow', 'red', 'purple', 'black', 'white', 'blue'];
+
+    function randomColor() {
+        var x = Math.floor(Math.random() * 256);
+        var y = Math.floor(Math.random() * 256);
+        var z = Math.floor(Math.random() * 256);
+        var color = "rgb(" + x + "," + y + "," + z + ")";
+        return color;
+    }
+
+    function changeColor() {
+        btn1.style.color = randomColor();
+    }
+
+    function changeColor2() {
+        i++;
+        i = i % 9;
+        btn2.style.color = arr[i];
+    }
+</script>

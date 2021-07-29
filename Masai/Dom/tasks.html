@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        li {
+            font-size: 20px;
+            margin-top: 50px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>To do List:</h1>
+    <input id="task" type="text" placeholder="Enter task">
+    <button onclick="submit()">Submit</button>
+
+    <ul id="task-list">
+
+    </ul>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function createTask(t) {
+        this.name = t;
+        this.date = new Date();
+        this.status = false;
+    }
+
+    var taskList = document.getElementById("task-list");
+    var i = 0;
+
+    function submit() {
+        i++;
+        var taskValue = document.getElementById("task").value;
+        if (taskValue == null || taskValue == "")
+            return;
+        var task = new createTask(taskValue);
+        document.getElementById("task").value = null;
+        var li = document.createElement("li");
+
+        li.innerHTML =
+            `<div>${task.name}</div><div>${task.date}</div><div id="${i}">  ${task.status}</div> <button onclick="changeStatus(${i})">Toggle Status</button>`; //typing inner html for li element
+        taskList.append(li);
+
+    }
+
+    function changeStatus(i) {
+        var div = document.getElementById(i);
+        if (div.innerHTML == "false")
+            div.innerHTML = "true";
+        else
+            div.innerHTML = "false";
+    }
+</script>

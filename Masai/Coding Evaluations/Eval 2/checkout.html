@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-bottom: 100px;
+            color: rgb(110, 200, 230);
+        }
+
+        label,
+        input {
+            font-size: 20px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        input {
+            margin: 20px;
+        }
+
+        #total {
+            font-size: 30px;
+            margin-top: 50px;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 150px;
+            height: 30px;
+            background-color: green;
+            border: none;
+            border-radius: 20px;
+        }
+
+        button:hover {
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Address Form</h1>
+    <form>
+        <label for="add1">Address Line 1</label>
+        <input type="text" id="add1" placeholder="Address line 1"> <br>
+        <label for="add2">Address Line 2</label>
+        <input type="text" id="add2" placeholder="Address line 2"><br>
+        <label for="street">Street</label>
+        <input type="text" id="street" placeholder="Street"><br>
+        <label for="state">State</label>
+        <input type="text" id="state" placeholder="State"><br>
+        <label for="country">Country</label>
+        <input type="text" id="country" placeholder="Country"><br>
+    </form>
+    <div id="total"></div>
+    <button onclick="payments()">Pay</button>
+</body>
+
+</html>
+
+<script>
+    let item = document.getElementById("total");
+    let sum = JSON.parse(localStorage.getItem("totalCost"));
+    item.innerHTML = `Total Cost: ${sum}`
+
+    function payments() {
+        window.location.href = "payments.html"
+    }
+</script>

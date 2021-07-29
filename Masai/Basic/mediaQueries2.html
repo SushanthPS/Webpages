@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+        #nav {
+            background-color: yellow;
+            grid-area: a;
+            padding: 10px;
+            font-weight: 700;
+            font-size: 40px;
+        }
+
+        #left-box {
+            background-color: red;
+            grid-area: b;
+            font-weight: 500;
+            font-size: 25px;
+            padding: 10px;
+        }
+
+        #right-box1 {
+            background-color: greenyellow;
+            grid-area: c;
+            font-weight: 500;
+            font-size: 25px;
+            padding: 10px;
+        }
+
+        #right-box2 {
+            background-color: greenyellow;
+            grid-area: d;
+            font-weight: 500;
+            font-size: 25px;
+            padding: 10px;
+        }
+
+        #right-box3 {
+            background-color: greenyellow;
+            grid-area: e;
+            font-weight: 500;
+            font-size: 25px;
+            padding: 10px;
+        }
+
+        @media only screen and (min-width: 600px) {
+            #cont {
+                display: grid;
+                grid-template: "a "
+                    "b "
+                    "c"
+                    "d"
+                    "e";
+
+                grid-gap: 20px;
+                padding: 10px;
+                margin: 10px;
+            }
+
+            #left-box {
+                height: 300px
+            }
+
+            #right-box1,
+            #right-box2,
+            #right-box3 {
+                height: 150px
+            }
+
+        }
+
+        @media only screen and (min-width: 768px) {
+            #cont {
+                display: grid;
+                grid-template: "a a a "
+                    "b b b "
+                    "c d e";
+
+                grid-gap: 20px;
+                padding: 10px;
+                margin: 10px;
+            }
+
+            #left-box {
+                height: 500px;
+            }
+        }
+
+
+
+        @media only screen and (min-width: 992px) {
+            #cont {
+                display: grid;
+                grid-template: "a a a a"
+                    "b b b c"
+                    "b b b d"
+                    "b b b e";
+
+                grid-gap: 20px;
+                padding: 10px;
+                margin: 10px;
+
+            }
+
+            #left-box {
+                height: 680px;
+            }
+
+            #right-box1,
+            #right-box2,
+            #right-box3 {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cont">
+        <div id="nav">Navigation</div>
+        <div id="left-box">LEFT BOX</div>
+        <div id="right-box1">RIGHT BOX 1</div>
+        <div id="right-box2">RIGHT BOX 2</div>
+        <div id="right-box3">RIGHT BOX 3</div>
+
+    </div>
+</body>
+
+</html>

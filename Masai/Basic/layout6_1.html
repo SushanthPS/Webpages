@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #cont {
+            display: grid;
+            gap: 20px;
+            grid-template: "a a a a"
+                "b c d e";
+            width: 60%;
+            grid-template-rows: 50px 225px;
+            padding: 10px;
+            margin: auto;
+            margin-top: 200px;
+            font-family: sans-serif;
+        }
+
+        #nav {
+            background-color: #f8ff01;
+            grid-area: a;
+            font-size: 35px;
+            padding: 5px;
+        }
+
+        #box-1 {
+            background-color: #fe0000;
+            grid-area: b;
+            font-size: 25px;
+            padding: 5px;
+            color: grey
+        }
+
+        #box-2 {
+            background-color: #00fe2a;
+            grid-area: c;
+            font-size: 25px;
+            padding: 5px;
+            color: grey
+        }
+
+        #box-3 {
+            background-color: #5762ef;
+            grid-area: d;
+            font-size: 25px;
+            padding: 5px;
+            color: grey
+        }
+
+        #box-4 {
+            background-color: #989898;
+            grid-area: e;
+            font-size: 25px;
+            padding: 5px;
+            color: grey
+        }
+
+        @media only screen and (min-width: 600px) and (max-width:767px) {
+            #cont {
+                display: grid;
+                gap: 20px;
+                grid-template: "a"
+                    "b"
+                    "e"
+                    "c"
+                    "d";
+                width: 60%;
+                grid-template-rows: 100px 150px 150px 150px 150px;
+                padding: 10px;
+                margin: auto;
+                margin-top: 50px;
+            }
+
+            #box-1,
+            #box-2,
+            #box-3,
+            #box-4 {
+                padding: 20px;
+                font-weight: 700;
+            }
+
+            #nav {
+                padding: 20px;
+                font-size: 50px;
+            }
+        }
+
+        @media only screen and (min-width: 768px) and (max-width:991px) {
+            #cont {
+                display: grid;
+                gap: 20px;
+                grid-template: "a a"
+                    "b d"
+                    "c e";
+                width: 60%;
+                grid-template-rows: 70px 200px 200px 200px 200px;
+                padding: 10px;
+                margin: auto;
+                margin-top: 50px;
+            }
+
+            #nav {
+                padding: 10px;
+                font-size: 40px;
+            }
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cont">
+        <div id="nav">Navigation</div>
+        <div id="box-1">Box 1</div>
+        <div id="box-2">Box 2</div>
+        <div id="box-3">Box 3</div>
+        <div id="box-4">Box 4</div>
+    </div>
+</body>
+
+</html>

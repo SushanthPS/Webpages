@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #cont {
+            display: grid;
+            grid-gap: 20px;
+            grid-template-columns: auto auto auto auto auto;
+            grid-template-rows: auto auto auto;
+            height: 400px;
+            width: 700px;
+            margin: auto;
+            margin-top: 200px;
+        }
+
+        #cont div {
+            background-color: teal;
+            border-radius: 5px;
+        }
+
+        #cont div:nth-of-type(2) {
+
+            grid-area: 1/2/1/span 3;
+        }
+
+        #cont div:nth-of-type(4) {
+
+            grid-area: 2/1/2/span 3;
+        }
+
+        #cont div:nth-of-type(9) {
+            grid-area: 3/3/3/span 3;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cont">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+
+</html>

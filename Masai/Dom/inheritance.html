@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+
+</body>
+
+</html>
+
+
+<script>
+    const grandparents = {
+        type: "humans",
+        hairColor: "black",
+        familyName: "PS",
+        motherTongue: "Malayalam",
+        state: "Kerala",
+        rank: 3
+    };
+
+    //OBJECT CREATE METHOD TO CREATE PROTOTYPE
+    const parents = Object.create(grandparents);
+    parents.hello = function () {
+        console.log("Hello from your parents");
+    }
+    parents.rank = 2;
+    parents.name = ["Sunil Kumar", "Sneha Latha"];
+
+
+    //CONSTRUCTOR FUNCTION TO CREATE PROTOTYPE
+    const child = Object.setPrototypeOf({
+        name: "Sushanth PS",
+        age: 22,
+        rank: 1
+    }, parents)
+
+
+    console.log(grandparents);
+    console.log(parents);
+    console.log(child);
+</script>

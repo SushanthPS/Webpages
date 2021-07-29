@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    function myArray(x) {
+        this.length = arguments.length;
+
+        for (var i = 0; i < this.length; i++) {
+            this[i] = arguments[i];
+        }
+
+    }
+
+    myArray.prototype.pushing = function (x) {
+        var index = this.length;
+        this[index] = x;
+        this.length++;
+    }
+
+    myArray.prototype.reversing = function () {
+        let temp = new myArray();
+        for (var i = this.length - 1; i >= 0; i--)
+            temp.pushing(this[i]);
+
+        return (temp);
+    }
+
+    myArray.prototype.printing = function () {
+        var result = "";
+        for (var i = 0; i < this.length; i++)
+            result += this[i] + ", ";
+
+        console.log(result);
+    }
+
+    myArray.prototype.firstElement = function () {
+        return this[0];
+    }
+
+    const arr = new myArray(10, 20, 30);
+    arr.pushing(60);
+    arr.pushing(80);
+    arr.pushing(100);
+    console.log(arr.reversing());
+    arr.printing();
+    console.log(arr.firstElement());
+</script>

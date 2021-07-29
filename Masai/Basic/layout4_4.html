@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin-top: 200px;
+            width: 300px;
+
+        }
+
+        .flex {
+            display: flex;
+            width: 600px;
+            margin: auto;
+        }
+
+        #one,
+        #two,
+        #three {
+            display: flex;
+            background-color: teal;
+            margin: 10px;
+            padding: 20px;
+            height: 70px;
+            flex-basis: 70px;
+            border-radius: 5px;
+        }
+
+        .flex div:nth-of-type(even) {
+            flex-grow: 2;
+        }
+
+        .box2 div:nth-child(1) {
+            flex-grow: 1100;
+        }
+
+        .box3 div:nth-child(3) {
+            flex-grow: 1000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex">
+        <div id="one"></div>
+        <div id="two"></div>
+        <div id="three"></div>
+    </div>
+    <div class="flex box2">
+        <div id="one"></div>
+        <div id="two"></div>
+        <div id="three"></div>
+    </div>
+    <div class="flex box3">
+        <div id="one"></div>
+        <div id="two"></div>
+        <div id="three"></div>
+    </div>
+
+</body>
+
+</html>

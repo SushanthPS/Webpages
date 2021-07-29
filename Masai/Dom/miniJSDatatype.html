@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #grid {
+            display: grid;
+            gap: 20px;
+            width: 80%;
+            grid-template: "a b c d e f g"
+                "h h h h h h h";
+            margin: auto;
+            margin-top: 100px;
+            grid-template-rows: auto 500px;
+            color: white;
+
+        }
+
+        button {
+            height: 50px;
+            background-color: black;
+            font-weight: 800;
+            color: white;
+            font-size: 20px;
+
+        }
+
+        #objects {
+            grid-area: a;
+        }
+
+
+
+        #arrays {
+            grid-area: b;
+        }
+
+
+
+        #functions {
+            grid-area: c;
+        }
+
+
+
+        #strings {
+            grid-area: d;
+        }
+
+
+
+        #numbers {
+            grid-area: e;
+        }
+
+
+
+        #null {
+            grid-area: f;
+        }
+
+
+
+        #undefined {
+            grid-area: g;
+        }
+
+
+
+        #cont {
+            grid-area: h;
+            background-color: black;
+            padding: 20px;
+            font-size: 30px;
+        }
+
+        li {
+            padding-bottom: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="grid">
+        <button onclick="data(event)" id="objects">Objects</button>
+        <button onclick="data(event)" id="arrays">Arrays</button>
+        <button onclick="data(event)" id="functions">Functions</button>
+        <button onclick="data(event)" id="strings">Strings</button>
+        <button onclick="data(event)" id="numbers">Numbers</button>
+        <button onclick="data(event)" id="null">Null</button>
+        <button onclick="data(event)" id="undefined">Undefined</button>
+        <div id="cont">
+            <ul id="main">
+
+            </ul>
+        </div>
+    </div>
+
+
+</body>
+
+
+</html>
+
+<script>
+    div = document.getElementById("cont"); //initialzation
+    ul = document.getElementById("main"); //initialzation
+    var div; //declaration
+    var ul; //declarataion
+
+    function data(event) { //function start
+        var s = event.target.id;
+
+        if (s == "objects") {
+            ul.innerHTML = ""; //reassignment
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append("The Object class represents one of JavaScript's data types");
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append("A javaScript object is an entity having state and behavior (properties and method).");
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append("Nearly all objects in JavaScript are instances of Object");
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append("It is used to store various keyed collections and more complex entities");
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append(
+                "JavaScript is template based not class based. Here, we don't create classes to get the object. But, we directly create objects"
+            );
+        } else if (s == "functions") {
+            ul.innerHTML = ""; //reassignment
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append("A JavaScript function is a block of code designed to perform a particular task");
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append("A JavaScript function is executed when something invokes it (calls it)");
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append(
+                "A JavaScript function is defined with the function keyword, followed by a name, followed by parentheses ()"
+            );
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append("Function names can contain letters, digits, underscores, and dollar signs");
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append(
+                "Function arguments are the values received by the function when it is invoked"
+            );
+        } else if (s == "arrays") {
+            ul.innerHTML = ""; //reassignment
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append("JavaScript arrays are used to store multiple values in a single variable");
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append("An array is a special variable, which can hold more than one value at a time");
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append(
+                "An array can hold many values under a single name, and you can access the values by referring to an index number"
+            );
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append("Using an array literal is the easiest way to create a JavaScript Array");
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append(
+                "Arrays are a special type of objects"
+            );
+        } else if (s == "strings") {
+            ul.innerHTML = ""; //reassignment
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append("JavaScript strings are used for storing and manipulating text");
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append("A JavaScript string is zero or more characters written inside quotes");
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append(
+                "You can use single or double quotes "
+            );
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append(
+                "You can use quotes inside a string, as long as they don't match the quotes surrounding the string");
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append(
+                "To find the length of a string, use the built-in length property"
+            );
+        } else if (s == "numbers") {
+            ul.innerHTML = ""; //reassignment
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append("JavaScript has only one type of number. Numbers can be written with or without decimals");
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append("Extra large or extra small numbers can be written with scientific (exponent) notation");
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append(
+                "JavaScript Numbers are Always 64-bit Floating Point"
+            );
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append(
+                "JavaScript numbers are always stored as double precision floating point numbers, following the international IEEE 754 standard"
+            );
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append(
+                "The Number() function converts the object argument to a number that represents the object's value"
+            );
+        } else if (s == "null") {
+            ul.innerHTML = ""; //reassignment
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append("The value null represents the intentional absence of any object value");
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append("It is one of JavaScript's primitive values and is treated as falsy for boolean operations");
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append(
+                "The value null is written with a literal: null"
+            );
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append(
+                "null is not an identifier for a property of the global object, like undefined can be"
+            );
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append(
+                " In APIs, null is often retrieved in a place where an object can be expected but no object is relevant."
+            );
+        } else if (s == "undefined") {
+            ul.innerHTML = ""; //reassignment
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append(
+                "The undefined property indicates that a variable has not been assigned a value, or not declared at all "
+            );
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append(
+                "The global undefined property represents the primitive value undefined");
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append(
+                "It is one of JavaScript's primitive types"
+            );
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append(
+                "undefined is a property of the global object. That is, it is a variable in global scope"
+            );
+            var li = document.createElement("li");
+            ul.append(li);
+            li.append(
+                "You can use undefined and the strict equality and inequality operators to determine whether a variable has a value"
+            );
+        }
+
+
+
+
+    }
+</script>

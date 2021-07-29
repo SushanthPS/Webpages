@@ -1,0 +1,215 @@
+<html>
+
+<head>
+    <title>Unix</title>
+    <style>
+        button {
+            width: 100px;
+            height: 50px;
+            margin-top: 400px;
+            margin-left: 600px;
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+        }
+
+        body {
+            width: 70%;
+            margin: auto;
+            font-family: sans-serif;
+        }
+
+        #linus-box {
+            display: flex;
+            flex-direction: column;
+            background-color: #e3dadb;
+            padding: 20px;
+            width: 30%;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            margin-top: 20px;
+            height: 330px;
+            padding-top: 30px;
+        }
+
+        #linus-box img {
+            height: 160px;
+            width: 120px;
+        }
+
+        #sal-box img {
+            height: 150px;
+            width: 120px;
+            margin-right: 25px;
+        }
+
+        #linus-box h1 {
+            color: #000182;
+            font-weight: 800;
+            font-size: 35px;
+        }
+
+        #linus-box h3 {
+            font-size: 30px;
+            font-weight: 500;
+        }
+
+        #sal-box {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 58%;
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        #sal-box h1 {
+            color: #d60106;
+            font-weight: 700;
+        }
+
+        p {
+            font-weight: 500;
+            font-size: 20px;
+        }
+
+        #orange-box {
+            display: flex;
+            width: 90%;
+            background-color: #d35500;
+            color: white;
+            margin-top: 50px;
+            height: 140px;
+            padding: 10px;
+            padding-left: 30px;
+        }
+
+        #line {
+            background-color: black;
+            height: 110px;
+            width: 8px;
+            margin: auto;
+        }
+
+        #orange-box p {
+            color: black;
+        }
+
+        #oo {
+            text-align: right;
+            padding-right: 0px;
+        }
+
+        h2 {
+            font-size: 25px;
+        }
+
+        #orange-box>div:nth-child(1) {
+            width: 25%;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="button" onclick="addElements()" onmouseover="changeColor()">Create Page</button>
+</body>
+
+</html>
+
+<script>
+    var btn = document.getElementById("button");
+
+    function randomColor() {
+        var x = Math.floor(Math.random() * 256);
+        var y = Math.floor(Math.random() * 256);
+        var z = Math.floor(Math.random() * 256);
+        var color = "rgb(" + x + "," + y + "," + z + ")";
+        return color;
+    }
+
+    function changeColor() {
+        btn.style.backgroundColor = randomColor();
+    }
+
+    function addElements() {
+        btn.style.display = "none";
+
+        var div = document.createElement("div");
+        div.setAttribute("id", "linus-box");
+        document.body.append(div);
+
+        var image = document.createElement("img");
+        image.setAttribute("src",
+            "https://raw.githubusercontent.com/masai-school/full-stack-dev-1908/master/course/week_01/day_3/resources/images/linus.jpg"
+        );
+        div.append(image);
+
+        var h1 = document.createElement("h1");
+        h1.append("Linus Torvalds");
+        div.append(h1);
+
+        var h3 = document.createElement("h3");
+        h3.append("The creator of Linux & Git");
+        div.append(h3);
+
+        var div2 = document.createElement("div");
+        div2.setAttribute("id", "sal-box");
+        document.body.append(div2);
+
+        var image2 = document.createElement("img");
+        image2.setAttribute("src",
+            "https://raw.githubusercontent.com/masai-school/full-stack-dev-1908/master/course/week_01/day_3/resources/images/khan.jpg"
+        );
+        div2.append(image2);
+
+        var div2_2 = document.createElement("div");
+        div2.append(div2_2);
+
+        var h1 = document.createElement("h1");
+        var p = document.createElement("p");
+        h1.append("Sal Khan");
+        p.append(
+            "Salman Khan is the founder of the Khan Academy which has a mission of providing a free world-class education for anyone, anywhere."
+        )
+
+        div2_2.append(h1);
+        div2_2.append(p);
+
+        div3 = document.createElement("div");
+        div3.setAttribute("id", "orange-box");
+        document.body.append(div3);
+
+        var div = document.createElement("div");
+        div3.append(div);
+
+        var h2 = document.createElement("h2");
+        h2.append("Ken Thompson");
+
+        var p = document.createElement("p");
+        p.append("Designed and Implemented the original Unix operating system");
+
+        div.append(h2);
+        div.append(p);
+
+        var divLine = document.createElement("div");
+        divLine.setAttribute("id", "line");
+        div3.append(divLine);
+
+        var divoo = document.createElement("div");
+        divoo.setAttribute("id", "oo");
+        div3.append(divoo);
+
+        var h2 = document.createElement("h2");
+        h2.append("Dennis Ritchie");
+
+        var p = document.createElement("p");
+        p.append("The creator of C Programming Language");
+
+        divoo.append(h2);
+        divoo.append(p);
+
+    }
+
+    //  *************************************************************************************** 
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Notes app</title>
+</head>
+
+<body>
+    <h1>Note taking app</h1>
+    <select name="" id="day">
+        <option value="day1">Day 1</option>
+        <option value="day2">Day 2</option>
+        <option value="day3">Day 3</option>
+        <option value="day4">Day 4</option>
+    </select>
+    <input onkeypress="addNote(event)" type="text" id="note">
+
+</body>
+
+</html>
+<script>
+    var notes = {
+        day1: [],
+        day2: [],
+        day3: [],
+        day4: []
+    };
+
+    function addNote(event) {
+        if (event.key == "Enter") {
+            var note = document.getElementById("note").value;
+            var day = document.getElementById("day").value;
+            notes[day].push(note);
+            console.log("notes", notes);
+        }
+    }
+</script>

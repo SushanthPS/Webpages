@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <h1 id="head">My color should change when I double click the button!</h1>
+    <button id="button" ondblclick="changeColor()">Click here to change the heading color</button>
+    <br>
+</body>
+
+</html>
+
+<script>
+    var btn1 = document.getElementById("button");
+    var head = document.getElementById("head");
+
+    function randomColor() {
+        var x = Math.floor(Math.random() * 256);
+        var y = Math.floor(Math.random() * 256);
+        var z = Math.floor(Math.random() * 256);
+        var color = "rgb(" + x + "," + y + "," + z + ")";
+        return color;
+    }
+
+    function changeColor() {
+        head.style.color = randomColor();
+    }
+</script>

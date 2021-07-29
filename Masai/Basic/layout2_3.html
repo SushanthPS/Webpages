@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #cont {
+            display: grid;
+            gap: 20px;
+
+            grid-template: "a a a"
+                "b c c"
+                "b c c";
+            grid-template-rows: 50px 600px;
+            grid-template-columns: 200px;
+            width: 50%;
+            margin: auto;
+            margin-top: 100px;
+        }
+
+        #item-1 {
+            grid-area: a;
+            background-color: #ff2b2a;
+            border-radius: 5px;
+        }
+
+        #item-2 {
+            grid-area: b;
+            background-color: #55d400;
+            border-radius: 5px;
+        }
+
+        #item-3 {
+            grid-area: c;
+            background-color: #217867;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cont">
+        <div id="item-1"></div>
+        <div id="item-2"></div>
+        <div id="item-3"></div>
+    </div>
+</body>
+
+</html>

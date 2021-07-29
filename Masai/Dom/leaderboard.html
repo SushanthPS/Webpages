@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Leaderboards</title>
+    <style>
+        body {
+
+            font-size: 30px;
+            font-family: sans-serif;
+        }
+
+        body>div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+
+        #min {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 200px;
+            margin-top: 50px;
+
+        }
+
+        #max {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+
+        }
+
+        #min div:nth-child(1) {
+            border: 2px solid black;
+            background-color: red;
+            width: 120px;
+            height: 60px;
+            text-align: center;
+            padding-top: 25px;
+
+        }
+
+        #max div:nth-child(1) {
+            border: 2px solid black;
+            background-color: rgba(0, 170, 1, 255);
+            width: 120px;
+            height: 60px;
+            text-align: center;
+            padding-top: 25px;
+        }
+
+        #score {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        #score div:nth-child(2) {
+            border: 2px solid black;
+            background-color: #b3b3b3;
+            text-align: center;
+            width: 300px;
+            height: 90px;
+            font-size: 50px;
+            padding-top: 30px;
+        }
+
+
+        .row button {
+            border: 2px solid black;
+            width: 80px;
+            height: 80px;
+            margin: 10px;
+            font-size: 25px;
+        }
+
+        #enter {
+            margin-left: 800px;
+            margin-top: 30px;
+            width: 300px;
+            height: 70px;
+            font-size: 25px;
+            font-weight: 700;
+            color: white;
+            background-color: black;
+        }
+
+        .green {
+            background-color: #668100;
+        }
+
+        .orange {
+            background-color: #ff6500;
+        }
+
+        #zero {
+            background-color: #820064;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div id="min">
+            <div id="min-value">-</div>
+            <div>MIN</div>
+        </div>
+        <div id="max">
+            <div id="max-value">-</div>
+            <div>MAX</div>
+        </div>
+    </div>
+    <div id="score">
+        <div>SCORE</div>
+        <div id="score-num"></div>
+    </div>
+
+    <div class="row">
+        <button onclick="getvalue(event)" id="one" class="green">1</button>
+        <button onclick="getvalue(event)" id="two" class="orange">2</button>
+        <button onclick="getvalue(event)" id="three" class="green">3</button>
+    </div>
+    <div class="row">
+        <button onclick="getvalue(event)" id="four" class="orange">4</button>
+        <button onclick="getvalue(event)" id="five" class="orange">5</button>
+        <button onclick="getvalue(event)" id="six" class="orange">6</button>
+    </div>
+    <div class="row">
+        <button onclick="getvalue(event)" id="seven" class="green">7</button>
+        <button onclick="getvalue(event)" id="eight" class="orange">8</button>
+        <button onclick="getvalue(event)" id="nine" class="green">9</button>
+    </div>
+    <div class="row">
+        <button onclick="getvalue(event)" id="zero">0</button>
+    </div>
+    <button onclick="compare()" id="enter">ENTER</button>
+
+
+
+</body>
+
+</html>
+
+<script>
+    var score = document.getElementById("score-num");
+    var min = document.getElementById("min-value");
+    var max = document.getElementById("max-value");
+
+
+
+    function getvalue(event) {
+        var num = document.getElementById(event.target.id).innerHTML;
+        score.innerText += num;
+    }
+
+    function compare() {
+        var min_value = Number(min.innerText);
+        var max_value = Number(max.innerText);
+        var score_value = Number(score.innerText);
+
+        if (min.innerText == "-" && max.innerText == "-") {
+            min.innerText = score.innerText;
+            max.innerText = score.innerText;
+        }
+        if (score_value < min_value) {
+            min.innerText = score.innerText;
+        } else if (score_value > max_value) {
+            max.innerText = score.innerText;
+        }
+        score.innerText = "";
+    }
+</script>

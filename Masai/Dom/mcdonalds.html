@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        McDonalds
+    </title>
+    <style>
+        label {
+            font-size: 20px;
+        }
+
+        input {
+            margin-right: 50px;
+            margin-bottom: 20px;
+            width: 15px;
+            height: 15px;
+            border: 2px solid red;
+
+        }
+
+        input:nth-of-type(4) {
+            margin-right: 165px;
+        }
+
+        input:nth-of-type(5) {
+            margin-right: 160px;
+        }
+
+        #order-number {
+            border: 1px solid black;
+            float: right;
+            width: 200px;
+            height: 50px;
+            margin-top: -50px;
+            margin-right: 20px;
+            font-size: 20px;
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        button {
+            margin-top: 20px;
+            background-color: black;
+            color: white;
+            border: none;
+            width: 100px;
+            height: 30px;
+        }
+
+        #order-pics {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            width: 1200px;
+            height: 500px;
+            margin: auto;
+            margin-top: 50px;
+            border: 1px solid black;
+            justify-content: space-evenly;
+            padding-top: 50px;
+        }
+
+        img {
+            width: 120%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>McDonald's food ticketing system</h1>
+    <div id="order-number"></div>
+    <form id="form">
+        <label for="burger">McSpicy Chicken Burger</label>
+        <input type="checkbox" id="burger">
+
+        <label for="wrap">Big Spicy Chicken Wrap</label>
+        <input type="checkbox" id="wrap">
+
+        <label for="puff">Pizza McPuff</label>
+        <input type="checkbox" id="puff">
+
+        <br>
+
+        <label for="softserve">Soft Serve</label>
+        <input type="checkbox" id="softserve">
+
+        <label for="coke">Coke Float</label>
+        <input type="checkbox" id="coke">
+
+        <label for="naan">Kebab Naan</label>
+        <input type="checkbox" id="naan">
+    </form>
+    <button onclick="display()">Order Food</button>
+
+    <div id="order-pics"></div>
+
+
+</body>
+
+</html>
+
+<script>
+    let mainDiv = document.getElementById("order-pics");
+    let orderNumber = document.getElementById("order-number");
+    let num = 0;
+
+    let arr = {
+        burger: "https://www.mcdonaldsindia.com/images/products/SpicyDelights/McSpicyChicken.jpg",
+        wrap: "https://www.mcdonaldsindia.com/images/products/SpicyDelights/BigSpicyChickenWrap.jpg",
+        puff: "https://www.mcdonaldsindia.com/images/products/HappyPriceMenu/VegPizzaMcPuff.jpg",
+        softserve: "https://www.mcdonaldsindia.com/images/products/HappyPriceMenu/SoftServe.jpg",
+        coke: "https://www.mcdonaldsindia.com/images/products/HappyPriceMenu/CokeFloat.jpg",
+        naan: "https://www.mcdonaldsindia.com/images/products/HappyPriceMenu/Green-Chilli-Chicken-Kebab-Naan.png"
+    };
+
+    function display() {
+        let promise = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                resolve(order());
+            }, 5000);
+        });
+
+        promise.then(function (res) {
+            res;
+        })
+    };
+
+
+
+
+    function order() {
+        num++;
+        orderNumber.innerHTML = `Order No: ${num}`
+        mainDiv.innerHTML = "";
+        var checked = document.querySelectorAll("input:checked");
+
+        for (var i = 0; i < checked.length; i++) {
+            var name = checked[i].id;
+            var image = document.createElement("img");
+            image.src = arr[name];
+            mainDiv.append(image);
+        }
+
+    }
+</script>

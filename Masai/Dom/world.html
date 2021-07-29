@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #world {
+            display: grid;
+            grid-template-columns: 40% 40%;
+            gap: 10%;
+            padding: 5%;
+        }
+
+        .country {
+            border: 1px solid black;
+            height: 200px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>World map guide</h1>
+    <div id="world">
+        <div class="country">India</div>
+        <div class="country">USA</div>
+        <div class="country">Australia</div>
+        <div class="country">Brazil</div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function addListeners() {
+        var countries = document.querySelectorAll(".country");
+        for (let i = 0; i < countries.length; i++) {
+            countries[i].addEventListener("mouseover", function () {
+                alert(`You are in ${countries[i].innerHTML}`)
+            })
+        }
+    }
+    addListeners();
+</script>

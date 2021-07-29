@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #cont {
+            display: grid;
+            grid-template: "a "
+                "c"
+                "b";
+            margin: 20px;
+        }
+
+        #nav,
+        #left-box,
+        #right-box {
+            padding: 20px;
+            margin: 20px;
+        }
+
+        #nav {
+            background-color: yellow;
+            grid-area: a;
+            font-weight: 700;
+            font-size: 50px;
+        }
+
+        #left-box {
+            background-color: red;
+            grid-area: b;
+            height: 300px;
+            font-size: 30px;
+        }
+
+        #right-box {
+            background-color: green;
+            grid-area: c;
+            font-size: 30px;
+            height: 300px;
+        }
+
+        @media only screen and (min-width:600px) {
+            #cont {
+                display: grid;
+                grid-template: "a a a a"
+                    "b b c c";
+            }
+
+            #left-box,
+            #right-box {
+                height: 600px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cont">
+        <div id="nav">Navigation</div>
+        <div id="left-box">LEFT BOX</div>
+        <div id="right-box">RIGHT BOX</div>
+    </div>
+</body>
+
+</html>
