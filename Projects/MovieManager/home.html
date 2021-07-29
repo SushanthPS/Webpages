@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="nav-bar.css">
+    <style>
+        #slideshow img {
+            margin-top: 20px;
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        #movie-list {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            justify-content: space-evenly;
+            gap: 100px;
+            margin-top: 50px;
+            text-align: center;
+            font-size: 30px;
+            color: white;
+            line-height: 20px;
+
+        }
+
+        #movie-list img {
+            width: 250px;
+        }
+
+        h2 {
+            text-align: center;
+            color: red;
+            background-color: black;
+            font-size: 50px;
+            margin-top: 50px;
+            width: 100%;
+        }
+
+        .box {
+            margin-top: 1px;
+            background-color: rgba(255, 255, 255, .15);
+            backdrop-filter: blur(5px);
+            width: 450px;
+            height: 550px;
+        }
+
+        #sort {
+            display: flex;
+            justify-content: center;
+        }
+
+        #sort button {
+            margin: 20px;
+            font-size: 20px;
+            color: white;
+            background-color: black;
+            border: none;
+            border-radius: 5px;
+            height: 40px;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>MovieFlix</h1>
+    <div id="nav-bar">
+        <button id="home" onclick="window.open(`home.html`,`_self`)">Home</button>
+        <button id="login" onclick="window.open(`login.html`,`_self`)">Login</button>
+        <button id="signup" onclick="window.open(`signup.html`,`_self`)">Signup</button>
+    </div>
+</body>
+
+</html>
+
+
+<script>
+    //==========================================================================================================================
+
+    const arr = ["https://i.pinimg.com/originals/4a/2b/75/4a2b7549ea0044ac92404b63eb3e8a59.png",
+        "https://images4.alphacoders.com/595/thumb-1920-595710.jpg",
+        "https://files.wallpaperpass.com/2019/10/samurai%20jack%20wallpaper%20020%20-%203840x1080.jpg",
+        "https://i.pinimg.com/originals/bb/02/9b/bb029b05b7a615df38c24dec8d3b65f4.jpg",
+        "https://i.pinimg.com/originals/1a/c5/a7/1ac5a7d2f0b622a4f4c83d71c1aec03b.jpg"
+
+    ];
+    let slideshowDiv = document.createElement("div");
+    slideshowDiv.setAttribute("id", "slideshow");
+    document.body.append(slideshowDiv);
+
+    function slideshow() {
+        let i = 0;
+        let image = document.createElement("img");
+        image.src = arr[0];
+        slideshowDiv.append(image);
+
+        setInterval(function () {
+            i++;
+            image.src = arr[i];
+            if (i == 4)
+                i = -1;
+        }, 3000);
+
+    }
+
+    slideshow();
+
+    //==========================================================================================================================
+    let temp = document.createElement("h2");
+    temp.innerHTML = "Movies List"
+    document.body.append(temp);
+
+    let divSort = document.createElement("div");
+    divSort.setAttribute("id", "sort");
+    let btn1 = document.createElement("button");
+    btn1.innerHTML = "Sort: low to high";
+    let btn2 = document.createElement("button");
+    btn2.innerHTML = "Sort: high to low";
+    btn1.onclick = sortLH;
+    btn2.onclick = sortHL;
+    divSort.append(btn1, btn2);
+    document.body.append(divSort);
+
+
+
+
+    const movies = [{
+        name: "Parasite",
+        date: 2017,
+        rating: 8.6,
+        url: "https://static.parade.com/wp-content/uploads/2020/03/Parasite2.jpg"
+    }, {
+        name: "Lord of War",
+        date: 2005,
+        rating: 7.6,
+        url: "https://s3-eu-west-1.amazonaws.com/entertainmentie/uploads/2016/04/03143422/MV5BMTYzZWE3MDAtZjZkMi00MzhlLTlhZDUtNmI2Zjg3OWVlZWI0XkEyXkFqcGdeQXVyNDk3NzU2MTQ%40._V1_.jpg"
+    }, {
+        name: "The Dark Knight",
+        date: 2008,
+        rating: 9.0,
+        url: "https://s3-eu-west-1.amazonaws.com/entertainmentie/uploads/2016/04/03142753/PW51827-Joker-Why-So-Serious.jpg"
+    }, {
+        name: "The Assassin",
+        date: 2015,
+        rating: 6.3,
+        url: "https://assets.mubicdn.net/images/notebook/post_images/19893/images-w1400.jpg?1449196747"
+    }, {
+        name: "Perfume",
+        date: 2006,
+        rating: 7.5,
+        url: "https://smashinghub.com/wp-content/uploads/2012/06/Use-AIDA-Formula.jpg"
+    }, {
+        name: "Bring him home",
+        date: 2015,
+        rating: 8.0,
+        url: "https://e4p7c9i3.stackpathcdn.com/wp-content/uploads/2017/06/0-21-990x1467.jpg"
+    }, {
+        name: "Wonder Woman",
+        date: 2017,
+        rating: 7.4,
+        url: "https://www.designyourway.net/blog/wp-content/uploads/2019/08/A1wxXiiMuYL._SL1500_-700x1050.jpg"
+    }, {
+        name: "Daywatch",
+        date: 2006,
+        rating: 6.5,
+        url: "https://www.moviepostersetc.com/_staticProxy/content/ff808081163c05b001169d6655243ae9/Day_Watch_video_poster.jpg"
+    }, {
+        name: "Harry Potter",
+        date: 2001,
+        rating: 9.0,
+        url: "https://c8.alamy.com/comp/PXNNYY/harry-potter-und-der-feuerkelch-aka-harry-potter-and-the-goblet-of-fire-2005-regie-mike-newell-filmplakat-PXNNYY.jpg"
+    }, ]
+
+    localStorage.setItem("movies", JSON.stringify(movies));
+    let movieList = document.createElement("div");
+    movieList.setAttribute("id", "movie-list");
+    document.body.append(movieList);
+
+    function showMovies(mov) {
+        let arr = mov;
+        movieList.innerHTML = null;
+
+        for (var i = 0; i < arr.length; i++) {
+            let movieDiv = document.createElement("div");
+            movieDiv.setAttribute("class", "box");
+            let p = document.createElement("p");
+            let p3 = document.createElement("p");
+            let image = document.createElement("img");
+            p.innerHTML = arr[i].name + " (" + arr[i].date + ")";
+            p3.innerHTML = "★" + arr[i].rating;
+            image.src = arr[i].url;
+            movieDiv.append(p, p3, image);
+            movieList.append(movieDiv);
+        }
+    }
+
+    showMovies(JSON.parse(localStorage.getItem('movies')));
+
+    //==========================================================================================================================
+
+    function sortHL() {
+        let movies = JSON.parse(localStorage.getItem('movies'));
+        movies = movies.sort(function (a, b) {
+            return b.rating - a.rating;
+        });
+        showMovies(movies);
+    }
+
+    function sortLH() {
+        let movies = JSON.parse(localStorage.getItem('movies'));
+        movies = movies.sort(function (a, b) {
+            return a.rating - b.rating;
+        });
+        showMovies(movies);
+    }
+
+    //==========================================================================================================================
+</script>

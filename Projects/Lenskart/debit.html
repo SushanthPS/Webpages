@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Checkout Page</title>
+  <link rel="icon" href="https://cdn6.aptoide.com/imgs/0/1/9/0194595bbda43fce1b79ddcd7c7ca0f7_icon.png"
+    type="image/x-icon" />
+  <style>
+    #header {
+      background-color: #363636;
+      padding: 3px 0;
+      width: 100%;
+      margin-bottom: 50px;
+      margin-top: -8px;
+      margin-left: -10px;
+      padding-left: 200px;
+      height: 45px;
+    }
+
+    #space1 {
+      flex-basis: 17%;
+    }
+
+    #header>img {
+      height: 40px;
+    }
+
+    .whole_section {
+      display: flex;
+      width: 900px;
+      margin: 0px auto;
+    }
+
+    #functionScreen {
+      flex-basis: 70%;
+    }
+
+    #totalPaymentScreen {
+      flex: 1;
+      padding-right: 10px;
+    }
+
+    .heading {
+      padding-top: 3px;
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      border-bottom: 1px solid rgb(197, 194, 194);
+      border-left: 1px solid rgb(197, 194, 194);
+      border-right: 1px solid rgb(197, 194, 194);
+      margin-bottom: 15px;
+    }
+
+    .heading>input {
+      display: none;
+      visibility: hidden;
+    }
+
+    .heading>label {
+      margin-left: 10px;
+      display: block;
+    }
+
+    .hidden {
+      height: 0px;
+      overflow: hidden;
+      transition: height 0.8s padding 0.5s;
+    }
+
+    #promoCodeInputCheckBox:checked~.hidden {
+      padding-top: 35px;
+      height: 70px;
+      border-radius: 5px;
+      background-color: white;
+      padding-left: 20px;
+    }
+
+    .promoCodeInput {
+      height: 30px;
+      border-radius: 5px;
+      margin-right: 5px;
+    }
+
+    .hidden>button {
+      background-color: #00bac6;
+      color: white;
+      cursor: pointer;
+      border-color: #00bac6;
+    }
+
+    .hidden1 {
+      height: 0px;
+      padding: 0px 10px;
+      overflow: hidden;
+      display: flex;
+      background-color: white;
+    }
+
+    #paymentOptionCheckBox:checked~.hidden1 {
+      padding-top: 30px;
+      height: auto;
+      border-radius: 5px;
+      background-color: white;
+    }
+
+    .hidden1>div {
+      flex-basis: 35%;
+      margin-right: 10px;
+    }
+
+    .hidden1>form {
+      flex: 1;
+    }
+
+    .hidden1>form>div {
+      margin-top: 10px;
+      display: flex;
+      height: 30px;
+      flex-flow: row wrap;
+    }
+
+    .eachDiv {
+      flex-basis: 30%;
+    }
+
+    .image {
+      flex-basis: 50%;
+    }
+
+    .image img {
+      width: 100%;
+    }
+
+    .space {
+      flex: 1;
+    }
+
+    .block {
+      display: block;
+      width: 100%;
+    }
+
+    #debitOption>div {
+      padding: 15px 10px;
+      margin-bottom: 2px;
+      cursor: pointer;
+      background-color: #efefef;
+    }
+
+    #debitOption>div:first-child {
+      background-color: white;
+    }
+
+    #allDebitInpits>input {
+      height: 30px;
+      border: 1px solid #eeee;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+
+    #allDebitInpits button {
+      height: 40px;
+      width: 230px;
+      color: white;
+      cursor: pointer;
+      font-size: 17px;
+      border: 1px solid #00bbc6;
+      border-radius: 5px;
+      background-color: #00bbc6;
+    }
+
+    #totalPaymentScreen>div {
+      margin-left: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      padding: 0px 5px;
+      border: 1px solid black;
+    }
+
+    .makeItFlex {
+      display: block;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      flex-flow: row wrap;
+    }
+
+    .space {
+      flex: 1;
+    }
+
+    #paymentSection {
+      background-color: #00bac6;
+    }
+
+    #loading-animation {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header">
+    <div id="space1"></div>
+    <img src="https://static.lenskart.com/media/desktop/img/checkout_Lenskart_logo_2x.png" />
+  </div>
+  <div class="whole_section">
+    <div id="functionScreen">
+      <div id="promoCodeSection" class="heading">
+        <input type="checkbox" id="promoCodeInputCheckBox" />
+        <label for="promoCodeInputCheckBox">
+          <h4>PROMOTIONAL DISCOUNT</h4>
+        </label>
+        <div class="hidden">
+          <input type="text" class="promoCodeInput" placeholder="Voucher Code" />
+          <button id="promoCodeInputButton">APPLY</button>
+        </div>
+      </div>
+      <div id="paymentSection" class="heading">
+        <input type="checkbox" id="paymentOptionCheckBox" checked />
+        <label for="paymentOptionCheckBox">
+          <h4>PAYMENT OPTIONS</h4>
+        </label>
+        <div class="hidden1">
+          <div id="debitOption">
+            <div>Credit/Debit Card</div>
+            <div>BHIM UPI/ Phone Pe</div>
+            <div>Net Banking</div>
+            <div>UPI QR Code</div>
+            <div>Paytm</div>
+            <div>Google Pay</div>
+            <div>Show More Options</div>
+          </div>
+          <form id="allDebitInpits">
+            <div>
+              <div class="eachDiv">100% Secure</div>
+              <div class="space"></div>
+              <div class="eachDiv image">
+                <img src="https://static5.lenskart.com/images/cust_mailer/Mar-03/CheckoutStrip.png" />
+              </div>
+            </div>
+            <input type="number" placeholder="Enter Card Number" class="block cardNumber"
+              style="margin-right: '10px'" />
+            <input type="month" class="month" />
+            <input type="password" placeholder="CVV" class="cvv" />
+            <input type="text" class="block cardholderName" placeholder="Cardholder Name" />
+            <button id="purchased" style="float: left;">PLACE ORDER</button>
+            <img id="loading-animation" style="width: 90px; margin-top: -15px;"
+              src="https://hackernoon.com/images/0*4Gzjgh9Y7Gu8KEtZ.gif" alt="">
+          </form>
+        </div>
+      </div>
+      <div id="paras" style="display: flex; margin-bottom: 10px">
+        <div class="space"></div>
+        <p style="margin: 0px">
+          By placing the order, I have read and agreed to lenskart.com
+        </p>
+        <a style="text-decoration: none; color: black" href="https://www.lenskart.com/tnc_checkout">T&C</a>
+      </div>
+      <div style="display: flex; margin-bottom: 10px">
+        <h3 style="margin: 0px">Lenskart Assurance</h3>
+        <div class="space"></div>
+        <span><a style="text-decoration: none; color: black"
+            href="https://www.lenskart.com/cancellation.html">Cancellation Policy
+          </a></span>
+      </div>
+      <img style="width: 100%" src="https://static1.lenskart.com/media/desktop/img/all-assurance-offering.png" />
+    </div>
+    <div id="totalPaymentScreen">
+      <div>
+        <div id="subTotal" class="makeItFlex"></div>
+        <div id="netAmount" class="makeItFlex"></div>
+        <div id="promoCodeDisCount" class="makeItFlex"></div>
+        <div id="orderTotal" class="makeItFlex"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+<script>
+  let subTotal = document.getElementById("subTotal");
+  let netAmount = document.getElementById("netAmount");
+  let promoCodeDisCount = document.getElementById("promoCodeDisCount");
+  let orderTotal = document.getElementById("orderTotal");
+  let data = JSON.parse(localStorage.getItem("cartObj"));
+  let totalsum = data.reduce((acc, el) => {
+    return acc + el.price * el.qty;
+  }, 0);
+  let div1subTotal = document.createElement("div");
+  div1subTotal.textContent = "SUBTOTAL";
+  let div2subTotal = document.createElement("div");
+  div2subTotal.setAttribute("class", "space");
+  let div3subTotal = document.createElement("div");
+  div3subTotal.innerHTML = `₹${totalsum}`;
+  subTotal.append(div1subTotal, div2subTotal, div3subTotal);
+
+  let div1netAmount = document.createElement("div");
+  div1netAmount.textContent = "NET AMOUNT";
+  let div2netAmount = document.createElement("div");
+  div2netAmount.setAttribute("class", "space");
+  let div3netAmount = document.createElement("div");
+  div3netAmount.innerHTML = `₹${totalsum}`;
+  netAmount.append(div1netAmount, div2netAmount, div3netAmount);
+
+  let div1promoCodeDisCount = document.createElement("div");
+  div1promoCodeDisCount.textContent = "VOUCHER DISCOUNT";
+  let div2promoCodeDisCount = document.createElement("div");
+  div2promoCodeDisCount.setAttribute("class", "space");
+  let div3promoCodeDisCount = document.createElement("div");
+  div3promoCodeDisCount.innerHTML = `- ₹0`;
+  promoCodeDisCount.append(
+    div1promoCodeDisCount,
+    div2promoCodeDisCount,
+    div3promoCodeDisCount
+  );
+
+  let div1orderTotal = document.createElement("div");
+  div1orderTotal.textContent = "ORDER TOTAL";
+  let div2orderTotal = document.createElement("div");
+  div2orderTotal.setAttribute("class", "space");
+  let div3orderTotal = document.createElement("div");
+  div3orderTotal.innerHTML = `₹${totalsum}`;
+  orderTotal.append(div1orderTotal, div2orderTotal, div3orderTotal);
+
+  let promoCodeInput = document.querySelector(".promoCodeInput");
+  let button = document.getElementById("promoCodeInputButton");
+  button.addEventListener("click", function () {
+    if (promoCodeInput.value == "masai30") {
+      div3promoCodeDisCount.innerHTML = `- ₹${Math.trunc(totalsum * 0.3)}`;
+      div3orderTotal.innerHTML = `₹${Math.trunc(totalsum * 0.7)}`;
+    }
+    promoCodeInput.value = "";
+  });
+
+  let loadingAnimation = document.getElementById("loading-animation");
+  let buttonPurchased = document.getElementById("purchased");
+
+  buttonPurchased.onclick = async function (e) {
+    e.preventDefault();
+    let cardNumber = document.querySelector(".cardNumber");
+    let month = document.querySelector(".month");
+    let cvv = document.querySelector(".cvv");
+    let cardholderName = document.querySelector(".cardholderName");
+    if (
+      cardNumber.value != "" &&
+      month.value != null &&
+      cvv.value != "" &&
+      cardholderName.value != ""
+    ) {
+      cardNumber.value = "";
+      month.value = null;
+      cvv.value = "";
+      cardholderName.value = "";
+      loadingAnimation.style.display = "block"
+      let promise = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          resolve("ordered successfully");
+        }, 5000);
+      });
+
+      let res = await promise;
+      window.location.href = "purchased.html";
+    } else {
+      alert("fill all the fields");
+    }
+  };
+  let i = 0;
+  let promoCodeSection = document.getElementById("promoCodeSection");
+  let promoCodeInputCheckBox = document.getElementById(
+    "promoCodeInputCheckBox"
+  );
+  promoCodeInputCheckBox.onclick = function () {
+    check();
+
+    function check() {
+      if (i == 0) {
+        promoCodeSection.style.backgroundColor = "#00BAC6";
+        i = 1;
+      } else {
+        promoCodeSection.style.backgroundColor = "#efefef";
+        i = 0;
+      }
+    }
+  };
+
+  let j = 1;
+  let paymentSection = document.getElementById("paymentSection");
+  let paymentOptionCheckBox = document.getElementById("paymentOptionCheckBox");
+  paymentOptionCheckBox.onclick = function () {
+    check();
+
+    function check() {
+      if (j == 0) {
+        paymentSection.style.backgroundColor = "#00BAC6";
+        j = 1;
+      } else {
+        paymentSection.style.backgroundColor = "#efefef";
+        j = 0;
+      }
+    }
+  };
+</script>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: whitesmoke
+        }
+
+        #product-form {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            align-items: center;
+            width: 60%;
+            height: 500px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        #product-form input,
+        #product-form button {
+            margin: 20px;
+            font-size: 20px;
+            border: none;
+        }
+
+        #product-form input {
+            width: 350px;
+            text-align: center;
+            height: 50px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 60px;
+            margin-bottom: 100px;
+            color: black;
+        }
+
+        h2 {
+            font-size: 35px;
+            color: black;
+
+        }
+
+        button {
+            background-color: rgba(0, 0, 0, 0.589);
+            color: white;
+            width: 200px;
+            height: 50px;
+            border-radius: 50px !important;
+        }
+
+        #product-form button:hover {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>E-Commerce</h1>
+
+    <form id="product-form">
+        <h2>Add Products</h2>
+        <input type="text" id="name" placeholder="Enter Product Name">
+        <input type="number" id="price" placeholder="Enter Product Price">
+        <input type="text" id="url" placeholder="Enter Product URL">
+        <button onclick="addProduct(event)">Add</button>
+    </form>
+
+
+
+</body>
+
+</html>
+
+<script src="form.js"></script>

@@ -1,0 +1,30 @@
+ body {
+     font-family: sans-serif;
+     background-image: url(https://wallpaper-house.com/data/out/10/wallpaper2you_432582.jpg);
+ }
+
+ #nav-bar {
+     background-color: black;
+     display: flex;
+     justify-content: flex-end;
+     border-radius: 5px;
+ }
+
+ #nav-bar button {
+     margin: 15px;
+     margin-right: 50px;
+     font-size: 20px;
+     width: 100px;
+     height: 40px;
+     border-radius: 5px;
+     background-color: red;
+     border: none;
+ }
+
+ h1 {
+     color: red;
+     position: absolute;
+     margin-left: 25px;
+     margin-top: 18px;
+
+ }
