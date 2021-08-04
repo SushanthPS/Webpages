@@ -179,8 +179,7 @@
         let q = document.getElementById("query").value;
         let res = await
         fetch(
-            "https://youtube.googleapis.com/youtube/v3/search?q=" + q +
-            "&key=AIzaSyCC6x-eTZYBPY2RLsaobLyXCZxklTkFNw8&maxResults=20"
+            `https://youtube.googleapis.com/youtube/v3/search?q=${q}&key=AIzaSyCPcGPH9q4JVOrQ9_bPd-AIHF_AwEBQL_E&maxResults=20`
         );
         let data = await res.json();
         console.log(data);
@@ -188,6 +187,8 @@
         let {
             items
         } = data;
+
+        console.log(items);
 
         items = items.filter((el) => {
             return el.id.videoId != undefined;
@@ -216,7 +217,7 @@
         homeDiv.innerHTML = "";
         let res = await
         fetch(
-            "https://www.googleapis.com/youtube/v3/videos?part=contentDetails&chart=mostPopular&regionCode=IN&maxResults=10&key=AIzaSyCC6x-eTZYBPY2RLsaobLyXCZxklTkFNw8"
+            "https://www.googleapis.com/youtube/v3/videos?part=contentDetails&chart=mostPopular&regionCode=IN&maxResults=10&key=AIzaSyCPcGPH9q4JVOrQ9_bPd-AIHF_AwEBQL_E"
         )
         let data = await res.json();
         let {
