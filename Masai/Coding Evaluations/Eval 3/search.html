@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="stylesheet" href="./styles/search.css">
+    <title>Search</title>
+</head>
+
+<body>
+    <div id="cont">
+        <div id="navbar"></div>
+        <div>
+            <div id="data3">
+                <div><input type="text" placeholder="Search News..." id="query"></div>
+            </div>
+            <div id="dataDiv"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+<script type="module">
+
+    let dataDiv = document.getElementById("dataDiv");
+    import navbar from './components/navbar.js'
+    let nav = document.getElementById("navbar");
+    nav.innerHTML = navbar();
+    let q = document.getElementById("query");
+
+    import {getData,appendData} from './components/getData.js'
+
+
+
+    query.addEventListener("input",() => {
+        let query = q.value;
+        if(query.length>2) {
+            let url = `http://api.mediastack.com/v1/news?access_key=771bb4bc2b7a0e3be7c8b77b6a5eb23b&languages=en&keywords=${query}`
+            let res = getData(url);
+            res.then(data => {
+                appendData(data,dataDiv);
+            })
+        }
+    });
+
+
+</script>

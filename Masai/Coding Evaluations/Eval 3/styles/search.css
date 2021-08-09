@@ -1,0 +1,28 @@
+#navbar~div {
+    width: 100%;
+}
+
+#data3>div>input[type=text] {
+    width: 40%;
+    height: 30px;
+    outline: none;
+    border: none;
+    box-shadow: 0 2px 5px 1px rgb(64 60 67 / 30%);
+    margin-right: 20px;
+    border-radius: 20px;
+    padding: 10px;
+    margin-left: 400px;
+
+}
+
+#dataDiv {
+
+    padding: 30px;
+    padding-left: 50px;
+}
+
+#dataDiv>div {
+    cursor: pointer;
+    box-shadow: 0 2px 5px 1px rgb(64 60 67 / 15%);
+    padding: 10px;
+}

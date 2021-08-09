@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="stylesheet" href="./styles/news.css">
+    <title>News</title>
+
+</head>
+
+<body>
+    <div id="cont">
+        <div id="navbar"></div>
+        <div id="data2"></div>
+    </div>
+</body>
+
+</html>
+
+<script type="module">
+
+    import navbar from './components/navbar.js'
+    let nav = document.getElementById("navbar");
+    nav.innerHTML = navbar();
+
+    
+    let dataDiv = document.getElementById("data2");
+    let item = JSON.parse(localStorage.getItem("obj"));
+    
+    let {title,author,description,published_at,image} = item;
+    
+    function showItem() {
+        let div = document.createElement("div");
+
+        let h1 = document.createElement("h1");
+        h1.innerHTML = title;
+        let p = document.createElement("p");
+        p.innerHTML=description;
+        let im = document.createElement("img");
+        if(image!=null)
+            im.src = image;
+        
+        let smallDiv = document.createElement("div");
+        let h4 = document.createElement("h4");
+        h4.innerHTML = author;
+        let span = document.createElement("span");
+        span.innerHTML = published_at;
+        smallDiv.append(h4,span);
+
+        div.append(h1,im,smallDiv,p);
+        dataDiv.append(div);
+
+    }
+    showItem()
+
+</script>
