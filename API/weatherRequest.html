@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <input type="text" id="city">
+    <button onclick="weatherRequest()">Search</button>
+</body>
+
+</html>
+
+<script>
+    async function weatherRequest() {
+        let city = document.getElementById("city").value;
+        try {
+            let res = await fetch(
+                "https://api.openweathermap.org/data/2.5/weather?q=" + city +
+                "&appid=7faa343e868ec338278e5469c9eb0956"
+            );
+            let data = await res.json();
+            console.log(Math.round(data.main.temp - 273));
+        } catch (err) {
+            console.log("Error: " + err);
+        }
+    }
+</script>

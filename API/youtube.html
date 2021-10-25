@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="introduction" content="no-reference">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        input {
+            border: 1px solid #CCCCCC;
+        }
+
+        #nav-bar {
+            display: flex;
+            width: 100%;
+            position: fixed;
+            z-index: 999;
+            flex-direction: row;
+            margin-left: -8px;
+            height: 55px;
+            margin-top: -50px;
+            background: transparent;
+            background-color: white;
+
+        }
+
+        #nav-bar>div:nth-of-type(1) {
+            display: flex;
+            justify-content: flex-start;
+            cursor: pointer;
+        }
+
+        #nav-bar>div:nth-of-type(2) {
+            display: flex;
+            margin-left: 23%;
+            align-items: center;
+            width: 37%;
+        }
+
+        #nav-bar>div:nth-of-type(3) {
+            display: flex;
+            margin-left: 17%;
+            justify-content: flex-end;
+            width: 14%;
+            align-items: center;
+            justify-content: space-evenly;
+
+        }
+
+        #nav-bar>div:nth-of-type(3)>div>i {
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+
+
+        #nav-bar>div:nth-of-type(2)>div:nth-of-type(1) {
+            width: 80%;
+        }
+
+        #nav-bar>div:nth-of-type(2)>div:nth-of-type(2) {
+            height: 27px;
+            background-color: #F9F9F9;
+            width: 60px;
+            text-align: center;
+            margin-left: 13px;
+            padding-top: 3px;
+            color: grey;
+            cursor: pointer;
+            border: 1px solid #CCCCCC;
+        }
+
+        #nav-bar>div:nth-of-type(2)>div:nth-of-type(2):hover {
+            background-color: #F0F0F0;
+            color: #333333;
+
+        }
+
+        #nav-bar>div:nth-of-type(2)>div:nth-of-type(2) i {
+            font-size: 22px;
+        }
+
+
+        #nav-bar>div:nth-of-type(2)>div:nth-of-type(3) {
+            height: 27px;
+            width: 60px;
+            margin-left: 15px;
+            padding-top: 5px;
+            cursor: pointer;
+        }
+
+
+
+        input[type=text] {
+            height: 28px;
+            padding-left: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            width: 100%;
+        }
+
+
+        #icons {
+            margin-top: 15px;
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+
+
+        #videos-div {
+            display: grid;
+            grid-template-columns: auto;
+            margin-top: 50px;
+            gap: 10px;
+            padding-top: 70px;
+            margin-left: 450px;
+
+        }
+
+        #home-div {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            margin-top: -60px;
+            gap: 20px;
+            padding-top: 70px;
+            margin-left: 100px;
+            justify-content: center;
+        }
+
+        #home-div div {
+            margin-bottom: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav-bar">
+        <div>
+            <div id="icons"><i class="material-icons">menu</i></div>
+            <img onclick="homeScreen()"
+                src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0f0c6a73-c551-4935-a22e-8187e7a7b069/de201tk-97ce62c6-9920-4ea5-b860-df7317606801.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzBmMGM2YTczLWM1NTEtNDkzNS1hMjJlLTgxODdlN2E3YjA2OVwvZGUyMDF0ay05N2NlNjJjNi05OTIwLTRlYTUtYjg2MC1kZjczMTc2MDY4MDEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Jw0wZ8Ac1wc8bbQ8CxvqAyQW7dr_AGNlvXXtDOzaqtM"
+                alt="">
+        </div>
+        <div>
+            <div><input type="text" placeholder="Search" id="query"></div>
+            <div onclick="getSearch()"><i class="material-icons">search</i></div>
+            <div><i class="material-icons">mic</i></div>
+        </div>
+        <div style="color: #606060;">
+            <div><i class="material-icons">video_call</i></div>
+            <div><i class="material-icons">apps</i></div>
+            <div><i class="material-icons">notifications</i></div>
+            <div><i class="material-icons">account_circle</i></div>
+        </div>
+
+    </div>
+
+    <div id="videos-div">
+
+    </div>
+    <div id="home-div">
+
+    </div>
+
+
+</body>
+
+
+</html>
+
+<script>
+    let videoDiv = document.getElementById("videos-div");
+    let homeDiv = document.getElementById("home-div");
+
+
+    async function getSearch() {
+        videoDiv.innerHTML = "";
+        homeDiv.innerHTML = "";
+        let q = document.getElementById("query").value;
+        let res = await
+        fetch(
+            `https://youtube.googleapis.com/youtube/v3/search?q=${q}&key=AIzaSyCPcGPH9q4JVOrQ9_bPd-AIHF_AwEBQL_E&maxResults=20`
+        );
+        let data = await res.json();
+        console.log(data);
+
+        let {
+            items
+        } = data;
+
+        console.log(items);
+
+        items = items.filter((el) => {
+            return el.id.videoId != undefined;
+
+        })
+
+        items.forEach(({
+            id: {
+                videoId
+            }
+        }) => {
+
+            let div = document.createElement('div');
+            div.innerHTML = `<iframe width="360" height="200" src="https://www.youtube.com/embed/${videoId}"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>`;
+            videoDiv.append(div);
+
+        })
+
+    }
+
+    async function homeScreen() {
+        videoDiv.innerHTML = "";
+        homeDiv.innerHTML = "";
+        let res = await
+        fetch(
+            "https://www.googleapis.com/youtube/v3/videos?part=contentDetails&chart=mostPopular&regionCode=IN&maxResults=10&key=AIzaSyCPcGPH9q4JVOrQ9_bPd-AIHF_AwEBQL_E"
+        )
+        let data = await res.json();
+        let {
+            items
+        } = data;
+
+        items = items.filter((el) => {
+            return el.id != undefined;
+
+        })
+
+
+
+        items.forEach(({
+            id
+        }) => {
+            console.log(id);
+            let div = document.createElement('div');
+            div.innerHTML = `<iframe width="360" height="200" src="https://www.youtube.com/embed/${id}"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>`;
+            homeDiv.append(div);
+        })
+    }
+
+    homeScreen();
+</script>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        #register>form,
+        #login>form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #register>h3,
+        #login>h3 {
+            margin-bottom: 30px;
+        }
+
+        form>input {
+            margin-bottom: 1rem;
+        }
+
+        #main {
+            display: flex;
+            justify-content: space-evenly;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Masai Auth System</h1>
+    <div id="main">
+        <div id="register">
+            <h3>Register Form</h3>
+            <form onsubmit="register(event)">
+                Email: <input type="text" name="email" id="email">
+                Name: <input type="text" name="name" id="name">
+                Password: <input type="password" name="password" id="password">
+                Username: <input type="text" name="username" id="username">
+                Mobile: <input type="number" name="mobile" id="mobile">
+                Description <input type="text" name="description" id="description">
+                <input type="submit">
+            </form>
+        </div>
+        <div id="login">
+            <h3>Login Form</h3>
+            <form onsubmit="login(event)">
+                Username: <input type="text" name="username" id="loginUsername">
+                Password: <input type="password" name="password" id="loginPassword">
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    async function register(e) {
+        e.preventDefault();
+        let formData = {
+            email: document.getElementById("email").value,
+            name: document.getElementById("name").value,
+            username: document.getElementById("username").value,
+            password: document.getElementById("password").value,
+            mobile: document.getElementById("mobile").value,
+            description: document.getElementById("description").value,
+        }
+        let body = JSON.stringify(formData);
+
+        let res = await fetch("https://masai-api-mocker.herokuapp.com/auth/register", {
+            method: "POST",
+            body: body,
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        let data = await res.json();
+        console.log(data);
+        if (data.error == false)
+            alert("Registration Sucessfull")
+        else
+            alert("Registration Failed")
+
+    }
+
+    async function login(e) {
+        e.preventDefault();
+        try {
+            var formData = {
+                username: document.getElementById("loginUsername").value,
+                password: document.getElementById("loginPassword").value,
+            }
+            let body = JSON.stringify(formData);
+            let res = await fetch("https://masai-api-mocker.herokuapp.com/auth/login", {
+                method: "POST",
+                body: body,
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+
+
+            var data = await res.json();
+            window.location.href = "masaiHomepage.html"
+        } catch (err) {
+            console.log(err);
+            alert("Invalid credentials")
+        }
+
+        let [username, token] = [formData.username, data.token];
+        getMyProfile(username, token);
+    }
+
+    async function getMyProfile(username, token) {
+        let res = await fetch(`https://masai-api-mocker.herokuapp.com/user/${username}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        let data = await res.json();
+        console.log(data);
+    }
+</script>
