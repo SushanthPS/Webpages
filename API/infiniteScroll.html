@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Infinite Scroll</title>
+        <style>
+            body {
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 50px;
+                color: orange;
+            }
+
+            .container {
+                display: flex;
+                width: 80%;
+                margin: auto;
+                padding-top: 100px;
+                justify-content: space-around;
+            }
+
+            .infinite {
+                width: 350px;
+                height: 500px;
+                overflow: auto;
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                background-color: rgba(255, 255, 255, 0.15);
+                backdrop-filter: blur(5px);
+                padding: 10px;
+            }
+
+            .infinite + div {
+                color: red;
+            }
+
+            .infinite + div > p {
+                font-size: 2rem;
+            }
+
+            li {
+                list-style-type: none;
+                padding: 15px;
+                font-size: 1.2rem;
+                color: yellowgreen;
+                border: 1px solid black;
+                border-width: 1px 1px 0 1px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Infinite Scroll</h1>
+        <div class="container">
+            <div class="infinite"></div>
+            <div>
+                <p>Scroll Top: <span id="stop"></span></p>
+                <p>Client Height: <span id="cheight"></span></p>
+                <p>Scroll Height: <span id="sheight"></span></p>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+    let infinite = document.querySelector(".infinite");
+    let stop = document.getElementById("stop");
+    let cheight = document.getElementById("cheight");
+    let sheight = document.getElementById("sheight");
+
+    let itemCount = 1;
+    function loadItems() {
+        for (let i = 1; i <= 25; i++) {
+            let item = document.createElement("li");
+            item.innerHTML = "Item " + itemCount++;
+            infinite.append(item);
+        }
+    }
+
+    infinite.addEventListener("scroll", () => {
+        stop.innerHTML = infinite.scrollTop;
+        cheight.innerHTML = infinite.clientHeight;
+        sheight.innerHTML = infinite.scrollHeight;
+
+        if (infinite.scrollTop + infinite.clientHeight >= infinite.scrollHeight)
+            loadItems();
+    });
+
+    loadItems();
+</script>
