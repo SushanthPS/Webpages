@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Marvel</title>
+        <style>
+            body {
+                background-image: url("https://i.pinimg.com/originals/20/70/f8/2070f812d6a581d5782c2df2f13165e8.gif");
+                background-size: cover;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            .container {
+                padding-top: 150px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+            }
+
+            .output {
+                margin: auto;
+                width: 90%;
+                color: white;
+                font-weight: 500;
+                font-size: 1.2rem;
+                display: grid;
+                grid-template-columns: auto auto auto;
+                justify-content: space-around;
+            }
+
+            #link {
+                color: red;
+                font-size: 2rem;
+                position: absolute;
+                top: 10px;
+            }
+
+            .thumbnail {
+                width: 300px;
+            }
+
+            .outerDiv {
+                padding: 10px;
+                margin-bottom: 40px;
+                border: 2px solid white;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <a id="link" href="marvel.html">Marvel Characters</a>
+            <div class="output" id="output"></div>
+        </div>
+    </body>
+</html>
+
+<script>
+    let output = document.getElementById("output");
+    let timerId;
+
+    async function getData() {
+        let res = await fetch(
+            `https://gateway.marvel.com:443/v1/public/comics?formatType=comic&noVariants=true&orderBy=focDate&apikey=a5030f5a54e8caea4219ed4d1e2e3c18`
+        );
+        let data = await res.json();
+        let temp = await data.data.results;
+        console.log(temp);
+        printData(temp);
+    }
+
+    function printData(data) {
+        output.innerHTML = "";
+        for (let key of data) {
+            let name = document.createElement("h3");
+            name.setAttribute("class", "name");
+            name.innerHTML = key.title;
+
+            let img = document.createElement("img");
+            img.setAttribute("class", "thumbnail");
+            let src = key.thumbnail.path + "." + key.thumbnail.extention;
+            img.setAttribute(
+                "src",
+                key.thumbnail.path + "." + key.thumbnail.extension
+            );
+
+            let div = document.createElement("div");
+            div.setAttribute("class", "outerDiv");
+            div.append(img);
+            div.append(name);
+            div.addEventListener("click", () => {
+                localStorage.removeItem("comic");
+                localStorage.setItem("comic", JSON.parse(key.id));
+                location.href = "./marvelComicDetail.html";
+            });
+            output.append(div);
+        }
+    }
+
+    getData();
+</script>

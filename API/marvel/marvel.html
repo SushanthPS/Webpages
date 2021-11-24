@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Marvel</title>
+        <style>
+            body {
+                background-image: url("https://i.pinimg.com/originals/20/70/f8/2070f812d6a581d5782c2df2f13165e8.gif");
+                background-size: cover;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            .container {
+                padding-top: 200px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+            }
+
+            input {
+                margin: 0 auto;
+                padding: 10px;
+                width: 400px;
+                outline: none;
+                font-size: 1rem;
+                background: black;
+                border: 1px solid white;
+                font-weight: 600;
+                color: white;
+            }
+
+            img {
+                width: 100px;
+                margin: auto;
+                margin-bottom: 50px;
+            }
+
+            .output {
+                margin: auto;
+                width: 420px;
+                background-color: black;
+                color: white;
+                font-weight: 500;
+                font-size: 1.2rem;
+                max-height: 300px;
+                overflow: auto;
+            }
+
+            .character {
+                padding: 10px;
+                cursor: pointer;
+                border: 1px solid blue;
+            }
+
+            #link {
+                color: red;
+                font-size: 2rem;
+                position: absolute;
+                top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <a id="link" href="marvelComics.html">Marvel Comics</a>
+            <img
+                src="https://i.pinimg.com/originals/d2/b6/d9/d2b6d9f420dd981e2387d7843e75feca.png"
+                alt=""
+            />
+            <input
+                placeholder="Search Marvel Characters"
+                oninput="throttle()"
+                type="text"
+                id="input"
+            />
+            <div class="output" id="output"></div>
+        </div>
+    </body>
+</html>
+
+<script>
+    let input = document.getElementById("input");
+    let output = document.getElementById("output");
+    let timerId;
+
+    function throttle() {
+        if (timerId) return false;
+
+        timerId = setTimeout(() => {
+            getData();
+            output.style.display = "none";
+            timerId = undefined;
+        }, 1000);
+    }
+
+    async function getData() {
+        let value = input.value;
+        if (value == "") {
+            return false;
+        }
+        let res = await fetch(
+            `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${value}&apikey=a5030f5a54e8caea4219ed4d1e2e3c18`
+        );
+        let data = await res.json();
+        let temp = await data.data.results;
+        printData(temp);
+    }
+
+    function printData(data) {
+        output.innerHTML = "";
+        output.style.display = "block";
+        for (let key of data) {
+            let div = document.createElement("div");
+            div.setAttribute("class", "character");
+            div.innerHTML = key.name;
+            output.append(div);
+        }
+    }
+</script>
